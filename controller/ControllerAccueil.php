@@ -5,10 +5,10 @@ require_once File::build_path(array('lib','Mail.php'));
 
 class ControllerAccueil {
 	
-	protected static $object = 'accueil';
+	protected static $object = 'home';
 	
 	public static function readAll() { // affiche page d'accueil
-            $controller='accueil';
+            $controller='home';
 			if (isset($_SESSION['hello'])) {
 				$view = $_SESSION['hello'];
 				$view2='readAll';
@@ -18,15 +18,13 @@ class ControllerAccueil {
 				$view='readAll';
 			}
             $pagetitle='HomePage - WevDev';
-            $barre = Session::retourButton();
             require File::build_path(array('view','view.php'));
 	}
 	
 	public static function error() { // redirige vers une page d'erreur
-            $controller='accueil';
+            $controller='home';
             $view='error';
             $pagetitle='Maintenance Error';
-            $barre = Session::retourButton();
             require File::build_path(array('view','view.php'));
 	}
 	
