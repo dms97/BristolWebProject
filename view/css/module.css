@@ -1,3 +1,9 @@
 table, th, td{
     border: 1px solid black;
 }
+
+#module_table {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
