@@ -13,7 +13,7 @@ class Session {
         return (!empty($_SESSION['user_type']) && $_SESSION['user_type'] == "student");
     }
 	
-	public static function is_student() {
+	public static function is_teacher() {
         return (!empty($_SESSION['user_type']) && $_SESSION['user_type'] == "teacher");
     }
     
