@@ -1,0 +1,3 @@
+<div class="accueil">
+	
+</div>
