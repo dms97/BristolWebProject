@@ -4,6 +4,13 @@
 		
 		protected static $object = 'module';
 		
+		public static function readAll() {
+			$controller='module';
+			$view='send';
+			require File::build_path(array('view','view.php'));
+		}
+		
+		
 		// Shows all modules with individual marks
 		public static function readStudent() {
 			// only available for students

@@ -1,7 +1,7 @@
 <?php
     require File::build_path(array('controller','module.ctrl.php'));
 
-    $controller = "home";
+    $controller = "module";
     if (isset($_GET['controller'])) { // prend controller spécifié dans URL
         $controller = $_GET['controller'];
     }
