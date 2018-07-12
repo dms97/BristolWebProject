@@ -1,12 +1,13 @@
 <?php
-    require File::build_path(array('controller','ControllerAccueil.php'));
+    require File::build_path(array('controller','module.ctrl.php'));
 
     $controller = "home";
     if (isset($_GET['controller'])) { // prend controller spécifié dans URL
         $controller = $_GET['controller'];
     }
 
-    $controller_class = "Controller" . ucfirst($controller);
+    // $controller_class = "Controller" . ucfirst($controller); // old version
+	$controller_class = $controller . ".ctrl";
 
     $action = "readAll";
     if (class_exists($controller_class)) { //vérifie si controller ok
