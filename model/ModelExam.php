@@ -4,14 +4,14 @@ require_once File::build_path(array('model','Model.php'));
 
 class ModelExam extends Model{
     
-    protected static $object = 'produits';
-    protected static $primary = 'idProduit';
+    protected static $object = 'exams';
+    protected static $primary = 'id';
     
-    private $idProduit;
-    private $nomProduit;
-    private $prixProduit;
-    private $type; //0 si produit, 1 si extension
-    private $descriptionProduit;
+    private $id;
+	private $moduleId;
+    private $examDate;
+    private $examType; //0 si produit, 1 si extension
+    private $ratio;
     
     public function get($nom_attribut){
         if (property_exists($this,$nom_attribut)){
@@ -33,16 +33,16 @@ class ModelExam extends Model{
     
      public function __construct($data = array()) {
         if (!empty($data)) {
-            $this->idProduit = $data['idProduit'];
-            $this->nomProduit = $data['nomProduit'];
-            $this->prixProduit = $data['prixProduit'];
-            $this->type = $data['type'];
-            $this->descriptionProduit = $data['descriptionProduit'];
+            $this->id = $data['id'];
+            $this->moduleId = $data['moduleId'];
+            $this->examDate = $data['examDate'];
+            $this->examType = $data['examType'];
+            $this->ratio = $data['ratio'];
         }
      }
      
      public function afficher(){
-         echo "Produit numero " . $this->idProduit . ", nom : " . $this->nomProduit . " vendu " . $this->prixProduit."euros et c'est un " .  $this->type;
+         echo "Exam n° " . $this->id . ", model : " . $this->moduleId . ", exam date : " . $this->examDate . ", examType : " .  $this->type . ", ratio :" . $this->ratio;
      }
      
      public function attributs() {
