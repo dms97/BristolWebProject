@@ -4,19 +4,17 @@ require_once File::build_path(array('model','Model.php'));
 
 class ModelUtilisateur extends Model{
     
-    protected static $object = 'utilisateurs';
-    protected static $primary = 'login';
-    
-    private $login;
-    private $nom;
-    private $prenom;
-    private $date_naissance;
-    private $mail;
-    private $adresse;
-    private $num_tel;
-    private $type; //1 si admin, 0 sinon
-    private $mot_de_passe;
-    private $nonce;
+    protected static $object = 'users';
+    protected static $primary = 'id';
+
+    private $id;
+    private $password;
+    private $firstName;
+    private $lastName;
+    private $email;
+    private $role;
+    private $phoneNumber;
+    private $address;
     
     public function get($nom_attribut){
         if (property_exists($this,$nom_attribut)){
@@ -38,16 +36,14 @@ class ModelUtilisateur extends Model{
     
     public function __construct($data = array()) {
         if (!empty($data)) {
-            $this->login = $data['login'];
-            $this->nom = $data['nom'];
-            $this->prenom = $data['prenom'];
-            $this->date_naissance = $data['date_naissance'];
-            $this->mail = $data['mail'];
-            $this->adresse = $data['adresse'];
-            $this->num_tel = $data['num_tel'];
-            $this->type = $data['type'];
-            $this->mot_de_passe = $data['mot_de_passe'];
-            $this->nonce = $data['nonce'];
+            $this->id = $data['id'];
+            $this->password = $data['password'];
+            $this->firstName = $data['firstname'];
+            $this->lastName = $data['lastname'];
+            $this->email = $data['email'];
+            $this->address = $data['adress'];
+            $this->phoneNumber = $data['phonenumber'];
+            $this->role = $data['Role'];
         }
     }
     
@@ -59,9 +55,9 @@ class ModelUtilisateur extends Model{
         return $data;
     }
     
-    public static function checkPassword($login,$mot_de_passe_chiffre) {
+    public static function checkPassword($id,$mot_de_passe_chiffre) {
         $bdd = new Model();
-        $sql = "SELECT COUNT(*) AS total FROM " . static::$object . " WHERE login = '$login' AND mot_de_passe = '$mot_de_passe_chiffre'";
+        $sql = "SELECT COUNT(*) AS total FROM " . static::$object . " WHERE id = '$id' AND mot_de_passe = '$mot_de_passe_chiffre'";
         $result = $bdd::$pdo->query($sql);
         $donnee = $result->fetch();
         if ($donnee['total'] == 1) {
@@ -72,12 +68,12 @@ class ModelUtilisateur extends Model{
         }
     }
 	
-	public static function checkNonce($login) {
+	public static function checkNonce($id) {
 		$bdd = new Model();
-        $sql = "SELECT nonce FROM " . static::$object . " WHERE login = :tag_login ";
+        $sql = "SELECT nonce FROM " . static::$object . " WHERE id = :tag_id ";
         $req_prep = $bdd::$pdo->prepare($sql);
         $values = array(
-            'tag_login' => $login
+            'tag_id' => $id
         );
         $req_prep->execute($values);
         $req_prep->setFetchMode(PDO::FETCH_ASSOC);
@@ -85,22 +81,22 @@ class ModelUtilisateur extends Model{
         return $donnee['nonce'];
 	}
 	
-	public static function majNonce($login) {
+	public static function majNonce($id) {
 		$bdd = new Model();
-		$sql = "UPDATE " . static::$object . " SET nonce = NULL WHERE login = :tag_login";
+		$sql = "UPDATE " . static::$object . " SET nonce = NULL WHERE id = :tag_id";
 		$req_prep = $bdd::$pdo->prepare($sql);
         $values = array(
-            'tag_login' => $login
+            'tag_id' => $id
         );
         $req_prep->execute($values);
 	}
     
-    public static function estAdmin($login) {
+    public static function estAdmin($id) {
         $bdd = new Model();
-        $sql = "SELECT type FROM " . static::$object . " WHERE login = :tag_login ";
+        $sql = "SELECT Role FROM " . static::$object . " WHERE id = :tag_id ";
         $req_prep = $bdd::$pdo->prepare($sql);
         $values = array(
-            'tag_login' => $login
+            'tag_id' => $id
         );
         $req_prep->execute($values);
         $req_prep->setFetchMode(PDO::FETCH_ASSOC);
