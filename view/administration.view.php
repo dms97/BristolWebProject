@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
 	<div>
 		<h1>Administration Panel</h1>
@@ -47,3 +48,8 @@
 
 
 </div>
+=======
+<?php include('../view/header.php') ?>
+</head>
+<?php include('../view/topBar.php') ?>
+>>>>>>> f1605f25d42e40f824bce049479aa629feaf9a0f
