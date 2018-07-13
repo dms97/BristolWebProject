@@ -1,5 +1,5 @@
 <?php
 
-    include_once('../view/exams.view.php');
-	
+	$activePage = "exam";
+    include_once('../view/exam.view.php');
 ?>
