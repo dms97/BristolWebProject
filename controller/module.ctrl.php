@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 	class module.ctrl {
 		
 		protected static $object = 'module';
@@ -54,6 +55,10 @@
 		
 	}
 	
+=======
+	include_once('../view/module.view.php');
+
+>>>>>>> 7b1afef995155898a903ab78f2fe2ae6203d703b
 ?>
 	
 	

@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="../view/css/module.css">
 </head>
 <?php include('../view/topBar.php') ?>
-<table>
+<table id="module_table">
     <tr>
         <th>Module</th>
         <th colspan="3">Assessment ans Exam Components</th>
