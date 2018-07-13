@@ -1,16 +1,17 @@
 <?php
+
 require_once File::build_path(array('model','Model.php'));
 
-class ModelMessage extends Model{
+class ModelProduit extends Model{
     
-    protected static $object = 'messages';
-    protected static $primary = 'idMessage';
+    protected static $object = 'produits';
+    protected static $primary = 'idProduit';
     
-    private $idMessage;
-    private $nomUtilisateur;
-    private $mail;
-    private $objet;
-    private $message;
+    private $idProduit;
+    private $nomProduit;
+    private $prixProduit;
+    private $type; //0 si produit, 1 si extension
+    private $descriptionProduit;
     
     public function get($nom_attribut){
         if (property_exists($this,$nom_attribut)){
@@ -32,12 +33,16 @@ class ModelMessage extends Model{
     
      public function __construct($data = array()) {
         if (!empty($data)) {
-            $this->idMessage = NULL;
-            $this->nomUtilisateur = $data['nomUtilisateur'];
-            $this->mail =$data ['mail'];
-            $this->objet = $data ['objet'];
-            $this->message = $data['message'];
+            $this->idProduit = $data['idProduit'];
+            $this->nomProduit = $data['nomProduit'];
+            $this->prixProduit = $data['prixProduit'];
+            $this->type = $data['type'];
+            $this->descriptionProduit = $data['descriptionProduit'];
         }
+     }
+     
+     public function afficher(){
+         echo "Produit numero " . $this->idProduit . ", nom : " . $this->nomProduit . " vendu " . $this->prixProduit."euros et c'est un " .  $this->type;
      }
      
      public function attributs() {
@@ -48,6 +53,5 @@ class ModelMessage extends Model{
         return $data;
     }
     
-      
 }
 ?>
