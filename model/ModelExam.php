@@ -1,16 +1,17 @@
 <?php
+
 require_once File::build_path(array('model','Model.php'));
 
-class ModelMessage extends Model{
+class ModelExam extends Model{
     
-    protected static $object = 'messages';
-    protected static $primary = 'idMessage';
+    protected static $object = 'exams';
+    protected static $primary = 'id';
     
-    private $idMessage;
-    private $nomUtilisateur;
-    private $mail;
-    private $objet;
-    private $message;
+    private $id;
+	private $moduleId;
+    private $examDate;
+    private $examType; //0 si produit, 1 si extension
+    private $ratio;
     
     public function get($nom_attribut){
         if (property_exists($this,$nom_attribut)){
@@ -32,12 +33,16 @@ class ModelMessage extends Model{
     
      public function __construct($data = array()) {
         if (!empty($data)) {
-            $this->idMessage = NULL;
-            $this->nomUtilisateur = $data['nomUtilisateur'];
-            $this->mail =$data ['mail'];
-            $this->objet = $data ['objet'];
-            $this->message = $data['message'];
+            $this->id = $data['id'];
+            $this->moduleId = $data['moduleId'];
+            $this->examDate = $data['examDate'];
+            $this->examType = $data['examType'];
+            $this->ratio = $data['ratio'];
         }
+     }
+     
+     public function afficher(){
+         echo "Exam n° " . $this->id . ", model : " . $this->moduleId . ", exam date : " . $this->examDate . ", examType : " .  $this->type . ", ratio :" . $this->ratio;
      }
      
      public function attributs() {
@@ -48,6 +53,5 @@ class ModelMessage extends Model{
         return $data;
     }
     
-      
 }
 ?>

@@ -1,9 +1,9 @@
-<div>
+<div class="administration">
 	<div>
 		<h1>Administration Panel</h1>
 	<div>
 	<div>
-		<form method="post" action="index.php?controller=utilisateur&action=created">
+		<form method="post" action="index.php?controller=administration.ctrl&action=created">
 			<fieldset>
 			   <p>
 					<?php if(isset($_POST['login'])){echo htmlspecialchars($_POST['login']);} ?>
@@ -30,13 +30,15 @@
 			   </p>
 			   <p>
 					Phone Number : 
-					<input type="tel" placeholder="phone number" name="num_tel" value="<?php if(isset($_POST['num_tel'])){echo htmlspecialchars($_POST['num_tel']);} ?>" required/>
+					<input type="tel" placeholder="phone number" name="num_phone" value="<?php if(isset($_POST['num_phone'])){echo htmlspecialchars($_POST['num_phone']);} ?>" required/>
 			   </p>
 			   <p>
-					<input type="password" pattern="^\S{6,}$" placeholder="Mot de passe" name="mot_de_passe" required/>
+					New Password
+					<input type="password" pattern="^\S{6,}$" placeholder="passw0rd" name="password" required/>
 			   </p>
 			   <p>
-					<input type="password" pattern="^\S{6,}$" placeholder="Confirmation mot de passe" name="conf_mdp" required/>
+					Verify New password
+					<input type="password" pattern="^\S{6,}$" placeholder="passw0rd" name="conf_password" required/>
 			   </p>
 			   <p>
 					<input type="submit" value="Apply Edits" />

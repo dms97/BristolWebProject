@@ -22,21 +22,14 @@ class ControllerAccueil {
             require File::build_path(array('view','view.php'));
 	}
         
-        public static function contact() { // affiche page contact
+    public static function survey() { // affiche page sondage
+			// ajouter que si STUDENT
             $controller='contact';
             $view='send';
             $pagetitle='Contact - OmniBag';
             $barre=Session::retourButton();
             require File::build_path(array('view','view.php'));
-	} 
-	
-	public static function faq(){ //affiche page faq
-            $controller = 'contact';
-            $view = 'faq';
-            $pagetitle = 'FAQ - OmniBag';
-            $barre=Session::retourButton();
-            require File::build_path(array('view','view.php'));
-	}	
+	}
 	
 	public static function sended(){ //affiche message "envoyé"        
             $barre=Session::retourButton();         
