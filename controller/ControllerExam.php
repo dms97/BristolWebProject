@@ -3,7 +3,7 @@
 require_once File::build_path(array('model','ModelProduit.php'));
 require_once File::build_path(array('controller','ControllerPanier.php'));
 
-class ControllerProduit {
+class ControllerExam {
 	
 	protected static $object = 'produit';
 	
