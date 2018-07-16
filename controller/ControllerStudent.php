@@ -1,6 +1,6 @@
 <?php
 
-require_once File::build_path(array('controller', 'ControllerAdministration.php'));
+//require_once File::build_path(array('controller', 'ControllerAdministration.php'));
 
 class ControllerStudent
 {

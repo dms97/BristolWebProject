@@ -1,7 +1,7 @@
 <?php
 
 require_once File::build_path(array('model', 'ModelExam.php'));
-require_once File::build_path(array('controller', 'ControllerAdministration.php'));
+//require_once File::build_path(array('controller', 'ControllerAdministration.php'));
 
 class ControllerExam
 {
