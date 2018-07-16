@@ -5,17 +5,17 @@
         <th>Mean</th>
         <th>Grade</th>
     </tr>
-	<?php
-		foreach ($objet as $t) {
-			echo '<tr>'
-				. '<td>' . htmlspecialchars($t['module']['titleModule']) .'</td>'
-				. '<td>' . htmlspecialchars($t['module']['exam1']['title']) . " : " . htmlspecialchars($t['module']['exam1']['coef']) .'</td>'
-				. '<td>' . htmlspecialchars($t['module']['exam2']['title']) . " : " . htmlspecialchars($t['module']['exam2']['coef']) .'</td>'
-				. '<td>' . htmlspecialchars($t['module']['exam3']['title']) . " : " . htmlspecialchars($t['module']['exam3']['coef']) .'</td>'
-				. '<td>' . htmlspecialchars($t['module']['mark']) . '</td>'
-				. '<td>' . htmlspecialchars($t['module']['grade']) . '</td>'
-				. '</tr>';
-		}
+    <?php
+    foreach ($objet in $t) {
+        echo '<tr>'
+            . '<td>' . htmlspecialchars($t['module']['titleModule']) . '</td>'
+            . '<td>' . htmlspecialchars($t['module']['exam1']['title']) . " : " . htmlspecialchars($t['module']['exam1']['coef']) . '</td>'
+            . '<td>' . htmlspecialchars($t['module']['exam2']['title']) . " : " . htmlspecialchars($t['module']['exam2']['coef']) . '</td>'
+            . '<td>' . htmlspecialchars($t['module']['exam3']['title']) . " : " . htmlspecialchars($t['module']['exam3']['coef']) . '</td>'
+            . '<td>' . htmlspecialchars($t['module']['mark']) . '</td>'
+            . '<td>' . htmlspecialchars($t['module']['grade']) . '</td>'
+            . '</tr>';
+    }
 	?>
     <!-- Example:
 	<tr>
@@ -26,5 +26,5 @@
         <td>0</td>
         <td>A++</td>
     </tr>
-	--> 
+	-->
 </table>
