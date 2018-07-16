@@ -2,7 +2,7 @@
 
 require_once File::build_path(array('model', 'Model.php'));
 
-class ModelAdministration extends Model
+class ModelUser extends Model
 {
 
     protected static $object = 'users';
@@ -83,6 +83,35 @@ class ModelAdministration extends Model
         $req_prep->setFetchMode(PDO::FETCH_ASSOC);
         $donnee = $req_prep->fetch();
         return $donnee['Role'];
+    }
+	
+	public static function selectStudents()
+    {
+        try {
+            $table_name = static::$object;
+            $class_name = "Model" . ucfirst($table_name);
+            $primary_key = static::$primary;
+            $bdd = new Model();
+            $sql = "SELECT * from $table_name WHERE Role=3";
+            $req_prep = $bdd::$pdo->prepare($sql);
+            $values = array(
+                "nom_tag" => $primary
+            );
+            $req_prep->execute($values);
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, $class_name);
+            $objet = $req_prep->fetchAll();
+            if (empty($objet)) {
+                return false;
+            }
+            return $objet[0];
+        } catch (PDOException $ex) {
+            if (Conf::getDebug()) {
+                echo $e->getMessage(); // affiche un message d'erreur
+            } else {
+                echo 'Une erreur est survenue, veuillez nous en excuser.';
+            }
+            die();
+        }
     }
 
 }
