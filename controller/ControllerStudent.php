@@ -16,7 +16,7 @@ class ControllerExam
         $controller = "student";
         $view = "readAll";
         $pagetitle = "Students";
-        $objet = ModelUser::selectAll();
+        $objet = ModelUser::selectStudents();
         require File::build_path(array('view', 'view.php'));
     }
 
