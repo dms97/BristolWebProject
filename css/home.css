@@ -2,6 +2,20 @@
     height: 100%;
 }
 
+.carousel-inner > .item > img {
+    width: 100%;
+}
+
+#myCarousel {
+    width: 100%;
+
+}
+
 .carousel-inner {
-    height: 300px;
+    height: 450px;
+}
+
+.article {
+    background-color: #e2e2e2;
+    margin: 15px 0;
 }
