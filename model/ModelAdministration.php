@@ -2,11 +2,12 @@
 
 require_once File::build_path(array('model','Model.php'));
 
-class ModelUtilisateur extends Model{
+class ModelAdminsitration extends Model{
     
     protected static $object = 'users';
     protected static $primary = 'id';
 
+	// CHANGE THIS DEFINITION ! CHECK THE DATABASE
     private $id;
     private $password;
     private $firstName;
