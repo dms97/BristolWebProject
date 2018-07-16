@@ -7,7 +7,6 @@ class ModelAdministration extends Model{
     protected static $object = 'users';
     protected static $primary = 'id';
 
-	// CHANGE THIS DEFINITION ! CHECK THE DATABASE
     private $id;
     private $password;
     private $firstName;
