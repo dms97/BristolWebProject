@@ -5,18 +5,16 @@
         <li data-target="#myCarousel" data-slide-to="1"></li>
     </ol>
 
-    <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="Image/harambe.jpg" alt="Img1">
+            <img class="carousel-img" src="css/img/student.jpg" alt="student">
         </div>
-
         <div class="item">
-            <img src="Image/image3.jpg" alt="Img2">
+            <img class="carousel-img" src="css/img/batx.jpg" alt="blockX">
         </div>
     </div>
 
-    <!-- Left and right controls -->
+    <!-- Controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>

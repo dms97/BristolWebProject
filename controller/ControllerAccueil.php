@@ -19,15 +19,17 @@ class ControllerAccueil {
 			}
             $pagetitle='Accueil - OmniBag';
             $barre = Session::retourButton();
+            $stylesheet = File::build_path(array('css','home.css'));
             require File::build_path(array('view','view.php'));
 	}
         
     public static function survey() { // affiche page sondage
-			// ajouter que si STUDENT
+            // ajouter que si STUDENT
             $controller='contact';
             $view='send';
             $pagetitle='Contact - OmniBag';
             $barre=Session::retourButton();
+            $stylesheet = File::build_path(array('css','home.css'));
             require File::build_path(array('view','view.php'));
 	}
 	
@@ -48,7 +50,7 @@ class ControllerAccueil {
 
                 Mail::envoiMail($_POST['Mail'], "Vous nous avez contacté", "Nous avons bien reçu votre mail, nous répondrons à celui-ci le plus rapidement possible \n");
                 Mail::envoiMail('laurent.garcia@etu.umontpellier.fr',$_POST['Sujet'],$_POST['Message']."<br> Envoyé par ". $_POST['Mail']);
-
+                $stylesheet = File::build_path(array('css','home.css'));
                 require File::build_path(array('view','view.php'));
 
             } catch (Exception $ex) {
@@ -61,6 +63,7 @@ class ControllerAccueil {
             $view='error';
             $pagetitle='Maintenance Error';
             $barre = Session::retourButton();
+            $stylesheet = File::build_path(array('css','home.css'));
             require File::build_path(array('view','view.php'));
 	}
 	
