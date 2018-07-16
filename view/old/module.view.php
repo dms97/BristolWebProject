@@ -1,5 +1,5 @@
 <?php include('../view/header.php') ?>
-    <link rel="stylesheet" href="../css/module.css">
+<link rel="stylesheet" href="../css/module.css">
 </head>
 <?php include('../view/topBar.php') ?>
 <table id="module_table">

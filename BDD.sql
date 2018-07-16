@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 12 Juillet 2018 à 13:48
+-- Généré le :  Lun 16 Juillet 2018 à 15:59
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `reportingsystem`
+-- Base de données :  `bristol`
 --
 
 -- --------------------------------------------------------
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `Email` varchar(80) NOT NULL,
-  `Role` varchar(255) NOT NULL,
+  `Role` int(8) NOT NULL,
   `PhoneNumber` varchar(20) NOT NULL,
   `Address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

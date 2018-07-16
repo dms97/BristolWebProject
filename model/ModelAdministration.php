@@ -1,9 +1,10 @@
 <?php
 
-require_once File::build_path(array('model','Model.php'));
+require_once File::build_path(array('model', 'Model.php'));
 
-class ModelAdministration extends Model{
-    
+class ModelAdministration extends Model
+{
+
     protected static $object = 'users';
     protected static $primary = 'id';
 
@@ -15,26 +16,27 @@ class ModelAdministration extends Model{
     private $role;
     private $phoneNumber;
     private $address;
-    
-    public function get($nom_attribut){
-        if (property_exists($this,$nom_attribut)){
+
+    public function get($nom_attribut)
+    {
+        if (property_exists($this, $nom_attribut)) {
             return $this->nom_attribut;
-        }
-        else {
+        } else {
             return false;
         }
     }
-    
-    public function set($nom_attribut){
-        if (property_exists($this,$nom_attribut)){
+
+    public function set($nom_attribut)
+    {
+        if (property_exists($this, $nom_attribut)) {
             return $this->nom_attribut;
-        }
-        else {
+        } else {
             return false;
         }
     }
-    
-    public function __construct($data = array()) {
+
+    public function __construct($data = array())
+    {
         if (!empty($data)) {
             $this->id = $data['id'];
             $this->password = $data['password'];
@@ -46,31 +48,33 @@ class ModelAdministration extends Model{
             $this->role = $data['Role'];
         }
     }
-    
-    public function attributs() {
+
+    public function attributs()
+    {
         $data = array();
         foreach ($this as $cle => $valeur) {
             $data[$cle] = $valeur;
         }
         return $data;
     }
-    
-    public static function checkPassword($id,$mot_de_passe_chiffre) {
+
+    public static function checkPassword($id, $mot_de_passe_chiffre)
+    {
         $bdd = new Model();
-        $sql = "SELECT COUNT(*) AS total FROM " . static::$object . " WHERE id = '$id' AND mot_de_passe = '$mot_de_passe_chiffre'";
+        $sql = "SELECT COUNT(*) AS total FROM users WHERE id = '$id' AND mot_de_passe = '$mot_de_passe_chiffre'";
         $result = $bdd::$pdo->query($sql);
         $donnee = $result->fetch();
         if ($donnee['total'] == 1) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    public static function estAdmin($id) {
+    public static function estAdmin($id)
+    {
         $bdd = new Model();
-        $sql = "SELECT Role FROM " . static::$object . " WHERE id = :tag_id ";
+        $sql = "SELECT Role FROM users WHERE id = :tag_id ";
         $req_prep = $bdd::$pdo->prepare($sql);
         $values = array(
             'tag_id' => $id
@@ -78,9 +82,9 @@ class ModelAdministration extends Model{
         $req_prep->execute($values);
         $req_prep->setFetchMode(PDO::FETCH_ASSOC);
         $donnee = $req_prep->fetch();
-        return $donnee['type'];
+        return $donnee['Role'];
     }
-        
+
 }
 
 ?>
