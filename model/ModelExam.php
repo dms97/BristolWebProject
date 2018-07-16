@@ -10,7 +10,7 @@ class ModelExam extends Model{
     private $id;
 	private $moduleId;
     private $examDate;
-    private $examType; //0 si produit, 1 si extension
+    private $examType; // exam title
     private $ratio;
     
     public function get($nom_attribut){
