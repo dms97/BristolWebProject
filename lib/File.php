@@ -1,16 +1,10 @@
 <?php
 
-<<<<<<< HEAD
-class File {
-    
-        public static function build_path($path_array) {
-=======
 class File
 {
 
     public static function build_path($path_array)
     {
->>>>>>> master
         // $path_array = array('controller','nom_fichier.php') ;
         $DS = DIRECTORY_SEPARATOR;
         $ROOT_FOLDER = __DIR__ . "/..";

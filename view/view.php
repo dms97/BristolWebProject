@@ -40,7 +40,7 @@
 // Si $controleur='voiture' et $view='list',
 // alors $filepath="/chemin_du_site/view/voiture/list.php"
 if (isset($view)) {
-    $filepath = File::build_path(array("view", $object, "$view.php"));
+    $filepath = File::build_path(array("view", static::$object, "$view.php"));
     require $filepath;
 } else {
     $file = File::build_path(array("view", "home.php"));

@@ -1,5 +1,4 @@
 <?php
-require_once File::build_path(array('model', 'ModelAdminisitration.php'));
 
 class ControllerAdministration
 {
