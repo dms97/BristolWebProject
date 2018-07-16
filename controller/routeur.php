@@ -8,14 +8,14 @@ require File::build_path(array('controller', 'ControllerAdminProd.php'));
 require File::build_path(array('controller', 'ControllerAdminMail.php'));
 //require File::build_path(array('controller','ControllerCommande.php'));
 
-$controller = "accueil";
+$controller = "administration";
 if (isset($_GET['controller'])) { // prend controller spécifié dans URL
     $controller = $_GET['controller'];
 }
 
 $controller_class = "Controller" . ucfirst($controller);
 
-$action = "readAll";
+$action = "connect";
 if (class_exists($controller_class)) { //vérifie si controller ok
     if (isset($_GET['action'])) { // prend action spécifié dans URL
         $class_methods = get_class_methods($controller_class);
@@ -27,7 +27,7 @@ if (class_exists($controller_class)) { //vérifie si controller ok
     }
     $controller_class::$action();
 } else { // erreur sinon
-    ControllerAccueil::readAll();
+    ControllerAdministration::error();
 }
 
 ?>
