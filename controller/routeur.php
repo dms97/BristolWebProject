@@ -1,6 +1,6 @@
 <?php
 require File::build_path(array('controller', 'ControllerAccueil.php'));
-require File::build_path(array('controller', 'ControllerAdministration.php'));
+require File::build_path(array('controller', 'ControllerUser.php'));
 require File::build_path(array('controller', 'ControllerExam.php'));
 require File::build_path(array('controller', 'ControllerModule.php'));
 require File::build_path(array('controller', 'ControllerStudent.php'));
