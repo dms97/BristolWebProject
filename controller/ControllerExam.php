@@ -20,7 +20,7 @@ class ControllerExam
             $pagetitle = $objet['titleExam'];
             require File::build_path(array('view', 'view.php'));
         } else {
-            ControllerAdministration::error();
+            ControllerUser::error();
         }
     }
 
