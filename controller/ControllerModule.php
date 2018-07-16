@@ -30,7 +30,6 @@ class ControllerModule {
             $controller = "module";
             $view="readAll";
             $pagetitle = "Modules";
-            $barre=Session::retourButton();
             $objet = ModelModule::selectAll();
             require File::build_path(array('view','view.php'));
         }

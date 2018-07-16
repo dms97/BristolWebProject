@@ -38,7 +38,7 @@ class ControllerExam {
 		 * Show an error.
 		 */
         public static function error() {
-            $controller = "adminisitration";
+            $controller = "administration";
             $view = "error";
             $pagetitle = "Error";
             require File::build_path(array('view','view.php'));
