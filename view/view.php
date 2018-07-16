@@ -35,7 +35,10 @@
 
 	
 	<?php
-	 // here, make an include for the view wanted
+		// static::$object = nom du modele voulu (utilisateur, commande, ...)
+		// $view = vue souhaitee (specifie dans le controller)
+		$filepath = File::build_path(array("view", static::$object, "$view.php"));
+		require $filepath;
 	?>
 
 </body>
