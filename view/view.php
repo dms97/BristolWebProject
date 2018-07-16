@@ -33,7 +33,11 @@
         </div>
     </nav>
 </header>
-
+<?php
+if(isset($message)) {
+    echo $message;
+}
+?>
 
 <?php
 
