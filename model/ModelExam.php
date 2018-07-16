@@ -2,10 +2,9 @@
 
 require_once File::build_path(array('model', 'Model.php'));
 
-class ModelExam extends Model
-{
-
-    protected static $object = 'exams';
+class ModelExam extends Model{
+    
+    protected static $object = 'examcomponents';
     protected static $primary = 'id';
 
     private $id;
