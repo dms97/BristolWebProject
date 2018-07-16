@@ -35,10 +35,17 @@
 
 	
 	<?php
-		// static::$object = nom du modele voulu (utilisateur, commande, ...)
-		// $view = vue souhaitee (specifie dans le controller)
-		$filepath = File::build_path(array("view", static::$object, "$view.php"));
-		require $filepath;
+
+        // Si $controleur='voiture' et $view='list',
+        // alors $filepath="/chemin_du_site/view/voiture/list.php"
+          if(isset($view)){
+              $filepath = File::build_path(array("view", $object, "$view.php"));
+              require $filepath;
+          }
+          else{
+            $file = File::build_path(array("view","home.php"));
+            require_once $file;
+          }
 	?>
 
 </body>
