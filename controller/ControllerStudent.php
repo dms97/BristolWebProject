@@ -1,9 +1,8 @@
 <?php
 
-require_once File::build_path(array('model', 'ModelStudent.php'));
 require_once File::build_path(array('controller', 'ControllerAdministration.php'));
 
-class ControllerExam
+class ControllerStudent
 {
 
     protected static $object = 'student';
