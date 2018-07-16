@@ -1,6 +1,6 @@
 <?php
 require_once File::build_path(array('model','ModelAdminisitration.php'));
-class ControllerUtilisateur {
+class ControllerAdministration {
    
         protected static $object = 'administration';
         static $adresse = 'infolimon.iutmontp.univ-montp2.fr/~lanal/'; // localhost/prog_web/
