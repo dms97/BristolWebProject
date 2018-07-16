@@ -2,7 +2,7 @@
 
 require_once File::build_path(array('model','Model.php'));
 
-class ModelAdminsitration extends Model{
+class ModelAdministration extends Model{
     
     protected static $object = 'users';
     protected static $primary = 'id';
@@ -68,30 +68,7 @@ class ModelAdminsitration extends Model{
             return false;
         }
     }
-	
-	public static function checkNonce($id) {
-		$bdd = new Model();
-        $sql = "SELECT nonce FROM " . static::$object . " WHERE id = :tag_id ";
-        $req_prep = $bdd::$pdo->prepare($sql);
-        $values = array(
-            'tag_id' => $id
-        );
-        $req_prep->execute($values);
-        $req_prep->setFetchMode(PDO::FETCH_ASSOC);
-        $donnee = $req_prep->fetch();
-        return $donnee['nonce'];
-	}
-	
-	public static function majNonce($id) {
-		$bdd = new Model();
-		$sql = "UPDATE " . static::$object . " SET nonce = NULL WHERE id = :tag_id";
-		$req_prep = $bdd::$pdo->prepare($sql);
-        $values = array(
-            'tag_id' => $id
-        );
-        $req_prep->execute($values);
-	}
-    
+
     public static function estAdmin($id) {
         $bdd = new Model();
         $sql = "SELECT Role FROM " . static::$object . " WHERE id = :tag_id ";
