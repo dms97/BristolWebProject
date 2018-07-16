@@ -1,15 +1,15 @@
 <?php
-require_once File::build_path(array('model','ModelUtilisateur.php'));
+require_once File::build_path(array('model','ModelAdminisitration.php'));
 class ControllerUtilisateur {
    
-        protected static $object = 'utilisateur';
+        protected static $object = 'administration';
         static $adresse = 'infolimon.iutmontp.univ-montp2.fr/~lanal/'; // localhost/prog_web/
         static $tp = 'eCommerce';
     
         public static function create() { //affiche formulaire de creation de compte
             $controller='utilisateur';
             $view='create';
-            $pagetitle='Inscription - OmniBag';
+            $pagetitle='Creating an account';
             $barre = Session::retourButton();
             require File::build_path(array('view','view.php'));
         }
@@ -20,21 +20,21 @@ class ControllerUtilisateur {
                 $controller='utilisateur';
                 $view='error_mdp';
                 $view2='create';
-                $pagetitle='Inscription - OmniBag';
+                $pagetitle='Creating an account';
                 require File::build_path(array('view','view.php'));
             }
             else if (ModelUtilisateur::select($_POST['login']) != false) { // si login déjà pris
                 $controller='utilisateur';
                 $view='error_login';
                 $view2='create';
-                $pagetitle='Inscription - OmniBag';
+                $pagetitle='Creating an account';
                 require File::build_path(array('view','view.php'));
             }
             else if (filter_var($_POST['mot_de_passe'], FILTER_VALIDATE_EMAIL)){ // si mail invalide
                     $controller='utilisateur';
                     $view='error_mail';
                     $view2='create';
-                    $pagetitle='Inscription - OmniBag';
+                    $pagetitle='Creating an account';
                     require File::build_path(array('view','view.php'));
                 }
                 else { // si tout ok
@@ -60,7 +60,7 @@ class ControllerUtilisateur {
                         Mail::envoiMail($_POST['mail'],"Confirmation de votre compte OmniBag", $texte);
                         $controller='utilisateur';
                         $view='created';
-                        $pagetitle='Inscription - OmniBag';
+                        $pagetitle='Creating an account';
                         require File::build_path(array('view','view.php'));
                     } catch (Exception $ex) {
                         ControllerUtilisateur::error2();
@@ -84,7 +84,7 @@ class ControllerUtilisateur {
         public static function connect() {
             $controller='utilisateur';
             $view='connect';
-            $pagetitle='Connexion - OmniBag';
+            $pagetitle='Connection';
             $barre = Session::retourButton();
             require File::build_path(array('view','view.php')); 
         }
@@ -103,7 +103,7 @@ class ControllerUtilisateur {
                 $controller='utilisateur';
                 $view='error_mdp';
                 $view2='connect';
-                $pagetitle='Connexion - OmniBag';
+                $pagetitle='Connection';
                 $barre = Session::retourButton();
                 require File::build_path(array('view','view.php'));
             }
