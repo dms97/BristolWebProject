@@ -66,7 +66,7 @@ if (isset($view)) {
 ?>
 
 
-<footer>
+<footer class="footer">
     Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
 </footer>
 </body>
