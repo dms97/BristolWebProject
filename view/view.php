@@ -22,6 +22,11 @@
     <header>
         <nav class="navbar navbar-default">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="index.php?controller=accueil">StudentApp</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -60,10 +65,10 @@ if (isset($view)) {
 }
 ?>
 
+
 <footer>
     Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
 </footer>
-
 </body>
 
 

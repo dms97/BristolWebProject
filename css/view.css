@@ -1,3 +1,7 @@
+body {
+    background-color: #bf0e00;
+}
+
 .navbar {
     margin: 0 -15px;
     border-width: 0px;
@@ -6,6 +10,10 @@
 }
 
 .navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a  {
     color: white;
 }
 
