@@ -90,7 +90,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = "SELECT * FROM User WHERE login=:nom_tag AND mdp=:tag_mdp AND nonce IS NULL";
+            $sql = "SELECT * FROM User WHERE login=:nom_tag AND mdp=:tag_mdp";
             $req_prep = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -242,7 +242,6 @@ class ModelUser extends Model
 
             $values = array( // On récupère toutes les valeurs pour insérer
                 'login' => $this->get('login'),
-                'nonce' => NULL //passe le nonce en null pour dire qu'il y a eu validatio,
             );
 
             $ajouterUser->execute($values);
@@ -258,7 +257,7 @@ class ModelUser extends Model
         }
     }
 
-    public function update()
+   /* public function update()
     {
         Model::isConnected();
         try {
@@ -286,7 +285,7 @@ class ModelUser extends Model
             }
             die();
         }
-    }
+    }*/
 }
 
 ?>

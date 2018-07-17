@@ -1,10 +1,10 @@
 <!-- Formulaire de connection d'utilisateur -->
 <div class="connect">
-    <form method="post" action="index.php?controller=administration&action=connected">
+    <form method="post" action="index.php?controller=user&action=verifUse">
         <fieldset>
             <legend>Connection :</legend>
             <p>
-                <input type="text" placeholder="Username" name="username" id="username_id"
+                <input type="text" placeholder="login" name="login" id="login_id"
                        value="<?php if (isset($_POST['login'])) {
                            echo $_POST['login'];
                        } ?>" required/>
