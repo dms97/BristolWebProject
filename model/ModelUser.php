@@ -258,7 +258,7 @@ class ModelUser extends Model
         }
     }
 
-    public function update()
+    public static function update($data)
     {
         Model::isConnected();
         try {

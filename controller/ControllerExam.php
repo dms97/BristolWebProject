@@ -30,7 +30,7 @@ class ControllerExam
     public static function readAll()
     {
         $controller = "exam";
-        $view = "readAllProd";
+        $view = "readAll";
         $pagetitle = "Exams";
         $objet = ModelExam::selectAll();
         require File::build_path(array('view', 'view.php'));
