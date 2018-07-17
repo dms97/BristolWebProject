@@ -46,6 +46,13 @@ class ControllerModule
         $pagetitle = "Error";
         require File::build_path(array('view', 'view.php'));
     }
+
+    public static function addModule(){
+        $controller = "module";
+        $view = "addModule";
+        $pagetitle="Add New Modules";
+        require File::build_path(array('view','view.php'));
+    }
 }
 
 ?>

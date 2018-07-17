@@ -210,8 +210,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = 'INSERT INTO Users
-              VALUES(:login,:mdp,:mail,:nom,:prenom,:adresse,:dateN, :isAdmin, :nonce)';
+            $sql = 'INSERT INTO Users VALUES(:login,:mdp,:mail,:nom,:prenom,:adresse,:dateN, :isAdmin, :nonce)';
             $verif = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -227,7 +226,6 @@ class ModelUser extends Model
             );
 
             $verif->execute($values);
-            //ancien JS
         } catch (PDOException $e) {
             if (Conf::getDebug()) {
                 echo $e->getMessage();
