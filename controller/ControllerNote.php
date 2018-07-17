@@ -68,5 +68,19 @@ class ControllerNote {
             }
             return $array2;
         }
+
+        public static function readAll()
+        {
+            if (ModelModule::select($_GET['id']) != NULL) {
+                $objet = getRange($_SESSION['login']); // Comment je précise l'ID ?
+                $controller = "note";
+                $view = "readAll";
+                $pagetitle = "Notes par module";
+                require File::build_path(array('view', 'view.php'));
+            } else {
+                ControllerUser::error();
+            }
+        }
 }
+
 ?>
