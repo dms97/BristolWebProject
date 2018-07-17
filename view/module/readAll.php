@@ -6,17 +6,22 @@
         <th>Grade</th>
     </tr>
     <?php
+	$tmp = "";
+	$i = 0;
     foreach ($objet as $t) {
-        echo '<tr>'
-            . '<td><a href="' . "http://" . $adresse . $tp . "/index.php?controller=module&action=read&id=" . htmlspecialchars($t['module']['idModule']) . '">' . htmlspecialchars($t['module']['titleModule']) . '</a></td>'
-            . '<td>' . htmlspecialchars($t['module']['exam1']['title']) . " : " . htmlspecialchars($t['module']['exam1']['coef']) . '</td>'
-            . '<td>' . htmlspecialchars($t['module']['exam2']['title']) . " : " . htmlspecialchars($t['module']['exam2']['coef']) . '</td>'
-            . '<td>' . htmlspecialchars($t['module']['exam3']['title']) . " : " . htmlspecialchars($t['module']['exam3']['coef']) . '</td>'
-            . '<td>' . htmlspecialchars($t['module']['mark']) . '</td>'
-            . '<td>' . htmlspecialchars($t['module']['grade']) . '</td>'
-            . '</tr>';
+        if ($tmp != $t['module']) {
+			$tmp = $t['module'];
+			if ($i != 0) {
+				echo '</tr>';
+			}
+			echo '<tr>' . '<td><a href="' . "http://" . $adresse . $tp . "/index.php?controller=module&action=read&id=" . htmlspecialchars($t['module']) . '">' . htmlspecialchars($t['module']) . '</a></td>';
+		}
+		echo '<td>' . htmlspecialchars($t['examtype']) . " : " . htmlspecialchars($t['mark']) . ' (' . htmlspecialchars($t['ratio']) . '%)</td>';
+		$tmp = $t['module'];
     }
+	echo '</tr>';
 	?>
+	
     <!-- Example:
 	<tr>
         <td>WP</td>
