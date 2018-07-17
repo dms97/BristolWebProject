@@ -32,7 +32,7 @@ class ControllerModule
         $controller = "module";
         $view = "readAll";
         $pagetitle = "Modules";
-        $objet = ModelModule::selectAll();
+        $objet = ModelModule::getAll();
         require File::build_path(array('view', 'view.php'));
     }
 

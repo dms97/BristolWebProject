@@ -51,6 +51,21 @@ class ModelModule extends Model
         return $data;
     }
 
+    public static function getAll(){
+        {
+            $sql = "SELECT * from modules inner join enrolled on modules.id = enrolled.moduleID where enrolled.studentsID=:login";
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "login" => $_SESSION['login'],
+            );
+            $req_prep->execute($values);
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModules');
+            $tab_p = $req_prep->FetchAll();
+
+            return $tab_p;
+        }
+    }
+
 }
 
 ?>
