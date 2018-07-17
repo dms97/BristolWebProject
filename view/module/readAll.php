@@ -8,7 +8,7 @@
     <?php
     foreach ($objet as $t) {
         echo '<tr>'
-            . '<td>' . htmlspecialchars($t['module']['titleModule']) . '</td>'
+            . '<td><a href="' . "http://" . $adresse . $tp . "/index.php?controller=module&action=read&id=" . htmlspecialchars($t['module']['idModule']) . '">' . htmlspecialchars($t['module']['titleModule']) . '</a></td>'
             . '<td>' . htmlspecialchars($t['module']['exam1']['title']) . " : " . htmlspecialchars($t['module']['exam1']['coef']) . '</td>'
             . '<td>' . htmlspecialchars($t['module']['exam2']['title']) . " : " . htmlspecialchars($t['module']['exam2']['coef']) . '</td>'
             . '<td>' . htmlspecialchars($t['module']['exam3']['title']) . " : " . htmlspecialchars($t['module']['exam3']['coef']) . '</td>'

@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+    $adresse = "localhost/"; // name of the serveur
+    $tp = "BristolWebProject"; // name of the website
+?>
 <html lang="en">
 <head>
     <title>Project</title>
