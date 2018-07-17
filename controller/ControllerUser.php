@@ -6,6 +6,8 @@ require_once File::build_path(array('lib', 'Security.php'));
 
 class ControllerUser {
 
+    protected static $object = 'User';
+
     public static function readAll() {
         Model::isConnected();
         Model::isAdmin();
@@ -16,15 +18,6 @@ class ControllerUser {
         $pagetitle='Liste des utilisateurs';
         require File::build_path(array('view','view.php'));
     }
-    /*}
-    else{
-        $view='notAdmin';
-        $controller ='User';
-        $pagetitle = 'Accès non autorisé';
-        require File::build_path(array('view','view.php'));
-    }
-
-}*/
 
     public static function read() {
         Model::isConnected();
@@ -39,25 +32,17 @@ class ControllerUser {
         }
 
     }
-    /*}
-    else{
-        $view='notAdmin';
-        $controller ='User';
-        $pagetitle = 'Accès non autorisé';
-        require File::build_path(array('view','view.php'));
-    }
-}*/
 
     public static function login() {
-        $view = "login";
+        $view = "connect";
         $controller = "User";
         $pagetitle="Connexion";
         require File::build_path(array('view','view.php'));
     }
 
     public static function verifUse(){
-        $exist= ModelUser::verifUser($_POST['login'],$_POST['mdp']);
-        $admin= ModelUser::isAdmin($_POST['login']);
+        $exist= ModelUser::verifUser($_POST['login'],$_POST['password']);
+        $admin= ModelUser::getRole($_POST['login']);
         $view = "logged";
         $controller = "User";
         $pagetitle="Connexion";

@@ -1,5 +1,8 @@
 <?php
 
+require_once "../lib/File.php";
+require_once "Model.php";
+
 // test values
 /*$id = 100;
 $pwd = "infres";

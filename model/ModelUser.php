@@ -90,7 +90,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = "SELECT * FROM User WHERE login=:nom_tag AND mdp=:tag_mdp AND nonce IS NULL";
+            $sql = "SELECT * FROM Users WHERE id=:nom_tag AND password=:tag_mdp";
             $req_prep = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -121,7 +121,7 @@ class ModelUser extends Model
     public function PseudoExist()
     {
         try {
-            $sql = 'SELECT * FROM User WHERE login=:log';
+            $sql = 'SELECT * FROM Users WHERE login=:log';
             $verif = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -148,7 +148,7 @@ class ModelUser extends Model
     public function mailExist()
     {
         try {
-            $sql = 'SELECT * FROM User WHERE login=:log';
+            $sql = 'SELECT * FROM Users WHERE login=:log';
             $verif = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -172,10 +172,10 @@ class ModelUser extends Model
         }
     }
 
-    static public function isAdmin($pseudo)
+    static public function getRole($pseudo)
     {
         try {
-            $sql = 'SELECT * From User WHERE login=:log';
+            $sql = 'SELECT * From Users WHERE id=:log';
             $verif = Model::$pdo->prepare($sql);
             $values = array(
                 'log' => $pseudo,);
@@ -184,7 +184,7 @@ class ModelUser extends Model
             $tab_p = $verif->FetchAll();
 
             if (!(empty($tab_p))) {
-                if ($tab_p[0]->get('isAdmin') == 1) {
+                if ($tab_p[0]->get('Role') == 1) {
                     return true;
                 } else {
                     return false;
@@ -206,7 +206,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = 'INSERT INTO User
+            $sql = 'INSERT INTO Users
               VALUES(:login,:mdp,:mail,:nom,:prenom,:adresse,:dateN, :isAdmin, :nonce)';
             $verif = Model::$pdo->prepare($sql);
 
@@ -235,14 +235,13 @@ class ModelUser extends Model
     }
 
     public function validate()
-    { //permet la validation d'un User
+    { //permet la validation d'un Users
         try {
-            $sql = 'UPDATE User SET nonce=:nonce WHERE login=:login';
+            $sql = 'UPDATE Users SET nonce=:nonce WHERE login=:login';
             $ajouterUser = Model::$pdo->prepare($sql);
 
             $values = array( // On récupère toutes les valeurs pour insérer
                 'login' => $this->get('login'),
-                'nonce' => NULL //passe le nonce en null pour dire qu'il y a eu validatio,
             );
 
             $ajouterUser->execute($values);
@@ -258,11 +257,11 @@ class ModelUser extends Model
         }
     }
 
-    public static function update($data)
+   /*public function update()
     {
         Model::isConnected();
         try {
-            $sql = 'UPDATE User SET mdp=:mdp, mail=:mail, nom=:nom, prenom=:prenom, adresse=:adresse, dateN=:dateN WHERE login=:login';
+            $sql = 'UPDATE Users SET mdp=:mdp, mail=:mail, nom=:nom, prenom=:prenom, adresse=:adresse, dateN=:dateN WHERE login=:login';
             $ajouterUser = Model::$pdo->prepare($sql);
 
             $values = array( // On récupère toutes les valeurs pour insérer
@@ -286,7 +285,32 @@ class ModelUser extends Model
             }
             die();
         }
-    }
+    }*/
+	
+	function addUser($id, $pwd, $fname, $lname, $mail, $role, $phone, $address) {
+		try {
+			$sql = 'INSERT INTO bristol.users VALUES (:id, :pwd, :fname, :lname, :mail, :role, :phone, :address)';
+			$verif = Model::$pdo->prepare($sql);
+
+			$values = array(
+							'id' => strip_tags($id),
+							'pwd' => strip_tags($pwd),
+							'mail' => strip_tags($fname),
+							'fname' => strip_tags($lname),
+							'lname' => strip_tags($mail),
+							'role' => strip_tags($role),
+							'phone' => strip_tags($phone),
+							'address' => strip_tags($address)
+						);
+
+			$verif->execute($values);
+			echo 'User added.';
+		} catch (PDOException $e) {
+			echo 'An error has occurred :/';
+			die();
+		}
+	}
+	
 }
 
 ?>

@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/topBar.css">
+    <link rel="stylesheet" href="css/view.css">
 
     <link rel="stylesheet" href="<?php
     echo $stylesheet; // stylesheet of the page (added by the controller)
@@ -26,11 +26,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li <?php if (static::$object === 'accueil') echo 'class="active"' ?>><a href="index.php?controller=accueil">Home</a></li>
-                <li <?php if (static::$object === 'module') echo 'class="active"' ?>><a href="index.php?controller=module">Modules</a></li>
-                <li <?php if (static::$object === 'exam') echo 'class="active"' ?>><a href="index.php?controller=exam">Exams</a></li>
-                <li <?php if (static::$object === 'student') echo 'class="active"' ?>><a href="index.php?controller=student">Students</a></li>
-                <li <?php if (static::$object === 'user') echo 'class="active"' ?>><a href="index.php?controller=user">Administration</a></li>
+                <li <?php if (isset($object) && static::$object === 'accueil') echo 'class="active"'; ?>><a href="index.php?controller=accueil">Home</a></li>
+                <li <?php if (isset($object) && static::$object === 'module') echo 'class="active"' ?>><a href="index.php?controller=module">Modules</a></li>
+                <li <?php if (isset($object) && static::$object === 'exam') echo 'class="active"' ?>><a href="index.php?controller=exam">Exams</a></li>
+                <li <?php if (isset($object) && static::$object === 'student') echo 'class="active"' ?>><a href="index.php?controller=student">Students</a></li>
+                <li <?php if (isset($object) && static::$object === 'user') echo 'class="active"' ?>><a href="index.php?controller=user">Administration</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="index.php?controller=user&action=login"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
@@ -56,6 +56,10 @@ if (isset($view)) {
     require_once $file;
 }
 ?>
+
+<footer>
+    Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
+</footer>
 
 </body>
 

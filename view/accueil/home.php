@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-offset-1 col-sm-5">
+    <div class="col-sm-6">
         <div class="article">
             <strong>Title</strong><br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -43,7 +43,7 @@
             laborum.
         </div>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="article">
             <strong>Title</strong><br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
