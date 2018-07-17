@@ -6,6 +6,8 @@ require_once File::build_path(array('lib', 'Security.php'));
 
 class ControllerUser {
 
+    protected static $object = 'User';
+
     public static function readAll() {
         Model::isConnected();
         Model::isAdmin();
@@ -40,7 +42,7 @@ class ControllerUser {
 
     public static function verifUse(){
         $exist= ModelUser::verifUser($_POST['login'],$_POST['password']);
-        $admin= ModelUser::isAdmin($_POST['login']);
+        $admin= ModelUser::getRole($_POST['login']);
         $view = "logged";
         $controller = "User";
         $pagetitle="Connexion";

@@ -90,7 +90,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = "SELECT * FROM User WHERE login=:nom_tag AND mdp=:tag_mdp";
+            $sql = "SELECT * FROM Users WHERE id=:nom_tag AND password=:tag_mdp";
             $req_prep = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -121,7 +121,7 @@ class ModelUser extends Model
     public function PseudoExist()
     {
         try {
-            $sql = 'SELECT * FROM User WHERE login=:log';
+            $sql = 'SELECT * FROM Users WHERE login=:log';
             $verif = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -148,7 +148,7 @@ class ModelUser extends Model
     public function mailExist()
     {
         try {
-            $sql = 'SELECT * FROM User WHERE login=:log';
+            $sql = 'SELECT * FROM Users WHERE login=:log';
             $verif = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -172,10 +172,10 @@ class ModelUser extends Model
         }
     }
 
-    static public function isAdmin($pseudo)
+    static public function getRole($pseudo)
     {
         try {
-            $sql = 'SELECT * From User WHERE login=:log';
+            $sql = 'SELECT * From Users WHERE id=:log';
             $verif = Model::$pdo->prepare($sql);
             $values = array(
                 'log' => $pseudo,);
@@ -184,7 +184,7 @@ class ModelUser extends Model
             $tab_p = $verif->FetchAll();
 
             if (!(empty($tab_p))) {
-                if ($tab_p[0]->get('isAdmin') == 1) {
+                if ($tab_p[0]->get('Role') == 1) {
                     return true;
                 } else {
                     return false;
@@ -206,7 +206,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = 'INSERT INTO User
+            $sql = 'INSERT INTO Users
               VALUES(:login,:mdp,:mail,:nom,:prenom,:adresse,:dateN, :isAdmin, :nonce)';
             $verif = Model::$pdo->prepare($sql);
 
@@ -235,9 +235,9 @@ class ModelUser extends Model
     }
 
     public function validate()
-    { //permet la validation d'un User
+    { //permet la validation d'un Users
         try {
-            $sql = 'UPDATE User SET nonce=:nonce WHERE login=:login';
+            $sql = 'UPDATE Users SET nonce=:nonce WHERE login=:login';
             $ajouterUser = Model::$pdo->prepare($sql);
 
             $values = array( // On récupère toutes les valeurs pour insérer
@@ -261,7 +261,7 @@ class ModelUser extends Model
     {
         Model::isConnected();
         try {
-            $sql = 'UPDATE User SET mdp=:mdp, mail=:mail, nom=:nom, prenom=:prenom, adresse=:adresse, dateN=:dateN WHERE login=:login';
+            $sql = 'UPDATE Users SET mdp=:mdp, mail=:mail, nom=:nom, prenom=:prenom, adresse=:adresse, dateN=:dateN WHERE login=:login';
             $ajouterUser = Model::$pdo->prepare($sql);
 
             $values = array( // On récupère toutes les valeurs pour insérer
