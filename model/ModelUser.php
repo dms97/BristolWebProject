@@ -257,7 +257,7 @@ class ModelUser extends Model
         }
     }
 
-   /* public function update()
+   /*public function update()
     {
         Model::isConnected();
         try {
@@ -285,7 +285,7 @@ class ModelUser extends Model
             }
             die();
         }
-    }
+    }*/
 	
 	function addUser($id, $pwd, $fname, $lname, $mail, $role, $phone, $address) {
 		try {
