@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/topBar.css">
+    <link rel="stylesheet" href="css/view.css">
 
     <link rel="stylesheet" href="<?php
     echo $stylesheet; // stylesheet of the page (added by the controller)
@@ -56,6 +56,10 @@ if (isset($view)) {
     require_once $file;
 }
 ?>
+
+<footer>
+    Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
+</footer>
 
 </body>
 
