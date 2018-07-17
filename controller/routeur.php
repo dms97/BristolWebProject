@@ -4,6 +4,7 @@ require File::build_path(array('controller', 'ControllerUser.php'));
 require File::build_path(array('controller', 'ControllerExam.php'));
 require File::build_path(array('controller', 'ControllerModule.php'));
 require File::build_path(array('controller', 'ControllerStudent.php'));
+require File::build_path(array('controller', 'ControllerNote.php'));
 
 $controller = "accueil";
 if (isset($_GET['controller'])) { // prend controller spécifié dans URL
