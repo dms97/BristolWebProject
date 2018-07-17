@@ -295,9 +295,9 @@ class ModelUser extends Model
 			$values = array(
 							'id' => strip_tags($id),
 							'pwd' => strip_tags($pwd),
-							'mail' => strip_tags($fname),
-							'fname' => strip_tags($lname),
-							'lname' => strip_tags($mail),
+							'fname' => strip_tags($fname),
+							'lname' => strip_tags($lname),
+							'mail' => strip_tags($mail),
 							'role' => strip_tags($role),
 							'phone' => strip_tags($phone),
 							'address' => strip_tags($address)
