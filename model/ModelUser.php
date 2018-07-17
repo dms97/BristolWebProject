@@ -185,9 +185,13 @@ class ModelUser extends Model
 
             if (!(empty($tab_p))) {
                 if ($tab_p[0]->get('Role') == 1) {
-                    return true;
-                } else {
-                    return false;
+                    return 'admin';
+                }
+                if ($tab_p[0]->get('Role') == 2) {
+                    return 'prof';
+                }
+                if ($tab_p[0]->get('Role') == 3) {
+                    return 'student';
                 }
             } else {
                 return false;
