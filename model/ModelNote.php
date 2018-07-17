@@ -79,10 +79,9 @@ class ModelNote extends Model
         return $notes;
     }
 
-    public function addMark($moduleID, $StudentID, $mark, $ExamCompoId, $resit)
-    {
+    public function addMark($moduleID,$StudentID,$mark,$ExamCompoId,$Resit){
         $bdd = new Model();
-        $sql = "INSERT INTO `exammarks` (`ModuleID`, `StudentsID`, `Marks`, `ExamComponentsID`, `Resit`) VALUES (\''$moduleID'\', \''$StudentID'\', \''$mark'\', \''$ExamCompoId'\', \''$resit'\')";
+        $sql = "INSERT INTO `exammarks` (`ModuleID`, `StudentsID`, `Marks`, `ExamComponentsID`, `Resit`) VALUES (\''$moduleID'\', \''$StudentID'\', \''$mark'\', \''$ExamCompoId'\', \''$Resit'\')";
     }
-}
+}   
 ?>
