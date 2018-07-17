@@ -63,9 +63,10 @@ class ModelNote extends Model
         if ($result = mysqli_query($bdd, $sql)) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
-                    $notes[$i] = $row['Title'];
-                    $notes[$i + 1] = $row['Marks'];
-                    $notes[$i + 2] = $row['Ratio'];
+                    $notes['module'] = $row['Title'];
+                    $notes['examtype'] = $row['Examtype'];
+                    $notes['mark'] = $row['Marks'];
+                    $notes['ratio'] = $row['Ratio'];
                     $i = $i + 3;
                 }
                 // Free result set

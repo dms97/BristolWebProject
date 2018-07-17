@@ -11,7 +11,7 @@ if (!empty($exist)) {
     // on enregistre les paramètres de notre visiteur comme variables de session ($login et $pwd) (notez bien que l'on utilise pas$ pour enregistrer ces variables)
     $_SESSION['login'] = $_POST['login'];
     $_SESSION['password'] = Security::chiffrer($_POST['password']);
-    $_SESSION['Role'] = $admin;
+    $_SESSION['Role'] = $role;
     echo '<body onLoad="alert(\'You are sign in\')">';
     echo '<meta http-equiv="refresh" content="0;URL=index.php">';
     exit;

@@ -42,7 +42,7 @@ class ControllerUser {
 
     public static function verifUse(){
         $exist= ModelUser::verifUser($_POST['login'],$_POST['password']);
-        $admin= ModelUser::getRole($_POST['login']);
+        $role= ModelUser::getRole($_POST['login']);
         $view = "logged";
         $controller = "User";
         $pagetitle="Connexion";
@@ -56,10 +56,10 @@ class ControllerUser {
         require File::build_path(array('view', 'view.php'));
     }
 
-    public static function delog() {
-        $view ="delog";
+    public static function logout() {
+        $view ="logout";
         $controller = "User";
-        $pagetitle = "Déconnexion";
+        $pagetitle = "Logout";
         require File::build_path(array('view', 'view.php'));
     }
 
