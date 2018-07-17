@@ -9,6 +9,7 @@
 	$tmp = "";
 	$i = 0;
     foreach ($objet as $t) {
+		var_dump($t);
         if ($tmp != $t['module']) {
 			$tmp = $t['module'];
 			if ($i != 0) {
