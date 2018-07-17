@@ -57,9 +57,9 @@ class ControllerUser {
     }
 
     public static function logout() {
-        $view ="delog";
+        $view ="logout";
         $controller = "User";
-        $pagetitle = "Déconnexion";
+        $pagetitle = "Logout";
         require File::build_path(array('view', 'view.php'));
     }
 
