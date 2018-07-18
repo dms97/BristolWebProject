@@ -99,8 +99,8 @@ class ModelNote extends Model
         $tmp2 =0;
         $mean = array();
         $i =0;
-        $j =0
-        $cpt=0;
+        $j =0;
+        $cpt =0;
         foreach ($objet as $t) {
             if ($tmp != $t->get("ModuleId") && $cpt != 0) {
                 $mean[$i][$j] = $tmp;
