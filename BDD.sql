@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 16 Juillet 2018 à 15:59
+-- Généré le :  Mer 18 Juillet 2018 à 10:44
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -85,7 +85,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Role` int(8) NOT NULL,
   `PhoneNumber` varchar(20) NOT NULL,
   `Address` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=123456790 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`Id`, `Password`, `FirstName`, `LastName`, `Email`, `Role`, `PhoneNumber`, `Address`) VALUES
+  (123456789, '2342B209B703BC94ABDC844229749A2433300FDC532013B86BAE1B3A38AEB580', 'test', 'test', 'test@yopmail.com', 1, '099999999', 'test');
 
 --
 -- Index pour les tables exportées
@@ -113,7 +120,7 @@ ALTER TABLE `exammarks`
 -- Index pour la table `modules`
 --
 ALTER TABLE `modules`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`Id`), ADD UNIQUE KEY `Title` (`Title`);
 
 --
 -- Index pour la table `users`
@@ -139,7 +146,7 @@ ALTER TABLE `modules`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=123456790;
 --
 -- Contraintes pour les tables exportées
 --
@@ -148,21 +155,21 @@ ALTER TABLE `users`
 -- Contraintes pour la table `enrolled`
 --
 ALTER TABLE `enrolled`
-ADD CONSTRAINT `FK_ModuleID_Enrolled` FOREIGN KEY (`ModuleID`) REFERENCES `modules` (`Id`),
-ADD CONSTRAINT `FK_StudentID` FOREIGN KEY (`StudentsID`) REFERENCES `users` (`Id`);
+  ADD CONSTRAINT `FK_ModuleID_Enrolled` FOREIGN KEY (`ModuleID`) REFERENCES `modules` (`Id`),
+  ADD CONSTRAINT `FK_StudentID` FOREIGN KEY (`StudentsID`) REFERENCES `users` (`Id`);
 
 --
 -- Contraintes pour la table `examcomponents`
 --
 ALTER TABLE `examcomponents`
-ADD CONSTRAINT `FK_ModuleID` FOREIGN KEY (`ModuleId`) REFERENCES `modules` (`Id`);
+  ADD CONSTRAINT `FK_ModuleID` FOREIGN KEY (`ModuleId`) REFERENCES `modules` (`Id`);
 
 --
 -- Contraintes pour la table `exammarks`
 --
 ALTER TABLE `exammarks`
-ADD CONSTRAINT `fk_EnrolledId` FOREIGN KEY (`ModuleID`, `StudentsID`) REFERENCES `enrolled` (`ModuleID`, `StudentsID`),
-ADD CONSTRAINT `fk_marks_ComponentsId` FOREIGN KEY (`ExamComponentsID`) REFERENCES `examcomponents` (`Id`);
+  ADD CONSTRAINT `fk_EnrolledId` FOREIGN KEY (`ModuleID`, `StudentsID`) REFERENCES `enrolled` (`ModuleID`, `StudentsID`),
+  ADD CONSTRAINT `fk_marks_ComponentsId` FOREIGN KEY (`ExamComponentsID`) REFERENCES `examcomponents` (`Id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
