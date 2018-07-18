@@ -91,9 +91,11 @@ class ModelNote extends Model
                 $tmp2 = $t->get("Marks") * $t->get("Ratio");
                 
             }
+            else{
 			$tmp2 = $tmp2 + ($t->get("Marks") * $t->get("Ratio"));
 			$tmp = $t->get("ModuleId");
-			$cpt = $cpt +1;
+            $cpt = $cpt +1;
+            }
         }
         $mean[$i]['id'] = $tmp;
         $mean[$i]['mean'] = $tmp2/100;

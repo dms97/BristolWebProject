@@ -13,7 +13,7 @@
                 <input type="password" placeholder="password" name="password" id="pwd_id" required/>
             </p>
             <p>
-                <input type="submit" value="Log On"/>
+                <input id="validation" type="submit" value="Log On"/>
             </p>
         </fieldset>
     </form>

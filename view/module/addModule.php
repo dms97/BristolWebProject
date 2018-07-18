@@ -12,9 +12,11 @@
             <div class="form-group row">
                 <label for="componentsNumber" class="col-sm-2 col-form-label">Number of components</label>
                 <div class="col-sm-10">
-                    <input type="number" id="componentsNumber" name="componentsNumber" onchange="formGenerator(value)" min="0" required/>
+                    <input type="number" id="componentsNumber" name="componentsNumber" onchange="formGenerator(value)"
+                           min="0" max="3" required/>
                 </div>
             </div>
         </fieldset>
+            <input type="submit" value="Create Module" id="submitMod" disabled/>
     </form>
 </div>
