@@ -93,5 +93,33 @@ class ModelNote extends Model
         $bdd = new Model();
         $sql = "INSERT INTO `exammarks` (`ModuleID`, `StudentsID`, `Marks`, `ExamComponentsID`, `Resit`) VALUES (\''$moduleID'\', \''$StudentID'\', \''$mark'\', \''$ExamCompoId'\', \''$Resit'\')";
     }
+
+    public static function Mean($objet){
+        $tmp=0;
+        $tmp2 =0;
+        $mean = array();
+        $i =0;
+        $j =0
+        $cpt=0;
+        foreach ($objet as $t) {
+            if ($tmp != $t->get("ModuleId") && $cpt != 0) {
+                $mean[$i][$j] = $tmp;
+                $mean[$i][$j+1] = $tmp2/100;
+                $mean[$i][$j+2] = Lettre($tmp2/100);
+                $i = $i +1; 
+                $tmp = $t->get("ModuleId");
+                $j =0;
+                $tmp2 = $t->get("Marks") * $t->get("Ratio");
+                
+            }
+            else {
+                $tmp2 = $tmp2 + ($t->get("Marks") * $t->get("Ratio"));
+                $tmp = $t->get("ModuleId");
+                $cpt = $cpt +1;
+            }
+        }
+        return $mean;
+    }
+
 }   
 ?>
