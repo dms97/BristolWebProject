@@ -15,6 +15,7 @@ class ControllerStudent
         $controller = "student";
         $view = "readAll";
         $pagetitle = "Students";
+		$stylesheet = "css/students.css";
         $objet = ModelUser::getAllStudents();
         require File::build_path(array('view', 'view.php'));
     }

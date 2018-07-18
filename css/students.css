@@ -1,0 +1,20 @@
+table, tr, th, td {
+	border: 1px solid;
+}
+
+table {
+	background-color: grey;
+}
+
+th {
+	text-align: center;
+	padding: 1%;
+}
+
+.ID {
+	font-weight: bold;
+	text-align: center;
+}
+
+
+

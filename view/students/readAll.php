@@ -10,7 +10,7 @@
 	<?php
 		foreach ($objet as $t) {
 			echo '<tr>'
-				. '<td>' . htmlspecialchars($t->get("Id")) .'</td>'
+				. '<td class="ID">' . htmlspecialchars($t->get("Id")) .'</td>'
 				. '<td>' . htmlspecialchars($t->get("FirstName")) .'</td>'
 				. '<td>' . htmlspecialchars($t->get("LastName")) .'</td>'
 				. '<td>' . htmlspecialchars($t->get("Email")) .'</td>'
