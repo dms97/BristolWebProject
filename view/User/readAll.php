@@ -1,4 +1,4 @@
-<div class="account">
+<div class="account col-sm-offset-4 col-sm-4">
     <div>
         <form method="post" action="index.php?controller=user&action=update">
             <fieldset>
@@ -42,7 +42,7 @@
                 </p>
 
                 <p>
-                    <button type="submit">Save</button>
+                    <button id="button_save_form" type="submit">Save</button>
                 </p>
             </fieldset>
         </form>
