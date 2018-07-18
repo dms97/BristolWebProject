@@ -61,7 +61,7 @@ class ModelUser extends Model
     {
         try {
 
-            $sql = "SELECT * FROM users WHERE login=:nom_tag";
+            $sql = "SELECT * FROM users WHERE Id=:nom_tag";
             $req_prep = Model::$pdo->prepare($sql);
 
             $values = array(

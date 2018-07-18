@@ -10,7 +10,7 @@
                        } ?>" required/>
             </p>
             <p>
-                <input type="password" placeholder="Password" name="password" id="pwd_id" required/>
+                <input type="password" placeholder="password" name="password" id="pwd_id" required/>
             </p>
             <p>
                 <input type="submit" value="Log On"/>

@@ -37,7 +37,7 @@ class Model {
 
     public static function isAdmin(){
         if(!$_SESSION['isAdmin']){
-            $pagetitle="accueil";
+            $pagetitle="Access denied";
             $message = "<div class='alert alert-warning'>Vous n'avez pas les droits d'accès</div>";
             require File::build_path(array("view","view.php"));
         }

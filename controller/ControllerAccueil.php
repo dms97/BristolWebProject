@@ -21,7 +21,7 @@ class ControllerAccueil
         // ajouter que si STUDENT
         $controller = 'contact';
         $view = 'send';
-        $pagetitle = 'Contact - OmniBag';
+        $pagetitle = 'Contact';
         $barre = Session::retourButton();
         $stylesheet = File::build_path(array('css', 'home.css'));
         require File::build_path(array('view', 'view.php'));
@@ -41,7 +41,7 @@ class ControllerAccueil
             $objet->save();
             $controller = 'contact';
             $view = 'sended';
-            $pagetitle = 'Message Envoyé - OmniBag';
+            $pagetitle = 'Message Envoyé';
 
             Mail::envoiMail($_POST['Mail'], "Vous nous avez contacté", "Nous avons bien reçu votre mail, nous répondrons à celui-ci le plus rapidement possible \n");
             Mail::envoiMail('laurent.garcia@etu.umontpellier.fr', $_POST['Sujet'], $_POST['Message'] . "<br> Envoyé par " . $_POST['Mail']);
