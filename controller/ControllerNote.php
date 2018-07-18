@@ -12,6 +12,7 @@ class ControllerNote {
                 $objet = ModelNote::getRange($_SESSION['login']);
                 $objet2 = ModelNote::Mean($objet);
                 $controller = "note";
+                $stylesheet = "css/module.css";
                 $view = "readAll";
                 $pagetitle = "Notes par module";
                 require File::build_path(array('view', 'view.php'));

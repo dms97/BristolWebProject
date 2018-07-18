@@ -1,0 +1,30 @@
+main {
+	text-align: center;
+	margin: auto;
+	color: white;
+}
+
+h1 {
+	border-bottom: 1px solid white;
+}
+
+span {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.question {
+	
+}
+
+.sug {
+	text-decoration: underline;
+}
+
+textarea {
+	margin-bottom: 5%;
+}
+
+.send {
+	color: black;
+}
