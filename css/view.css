@@ -3,7 +3,8 @@ body {
 }
 
 main {
-    min-height: 85.2vh;
+    min-height: 86.8vh;
+    padding-top: 15px;
 }
 
 .navbar {
