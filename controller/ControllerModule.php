@@ -18,6 +18,7 @@ class ControllerModule
             $controller = "module";
             $view = "read";
             $pagetitle = $objet['titleModule'];
+            $stylesheet = 'css/module.css';
             require File::build_path(array('view', 'view.php'));
         } else {
             ControllerUser::error();
@@ -33,6 +34,7 @@ class ControllerModule
         $view = "readAll";
         $pagetitle = "Modules";
         $objet = ModelModule::getAll();
+        $stylesheet = 'css/module.css';
         require File::build_path(array('view', 'view.php'));
     }
 

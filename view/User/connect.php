@@ -1,8 +1,8 @@
 <!-- Formulaire de connection d'utilisateur -->
 <div class="connect">
-    <form method="post" action="index.php?controller=user&action=verifUse">
+    <form method="post" action="index.php?controller=user&action=verifUser">
         <fieldset>
-            <legend>Connection :</legend>
+            <h1>Connection :</h1>
             <p>
                 <input type="text" placeholder="login" name="login" id="login_id"
                        value="<?php if (isset($_POST['login'])) {

@@ -1,10 +1,10 @@
 <?php
 
-require_once File::build_path(array('model','Modelnote.php'));
+require_once File::build_path(array('model','ModelNote.php'));
 
 class ControllerNote {
 	
-	protected static $object = 'exammarks';
+	protected static $object = 'note';
 
         public static function Lettre($Range) {
             if ($Range < 40 ) {
@@ -71,8 +71,8 @@ class ControllerNote {
 
         public static function readAll()
         {
-            if (ModelModule::select($_GET['id']) != NULL) {
-                $objet = getRange($_SESSION['login']); // Comment je précise l'ID ?
+            if (isset($_SESSION['login'])) {
+                $objet = ModelNote::getRange($_SESSION['login']);
                 $controller = "note";
                 $view = "readAll";
                 $pagetitle = "Notes par module";

@@ -1,0 +1,10 @@
+.connect {
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    border: 2px solid;
+    padding: 0 100px 15px;
+    margin-top: 15px;
+}
