@@ -5,7 +5,7 @@
 ?>
 <html lang="en">
 <head>
-    <title>Project</title>
+    <?php if(isset($pagetitle)) echo "<title>$pagetitle</title>"; else echo "<title>Project</title>" ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php?controller=accueil">StudentApp</a>
+                <span class="navbar-brand">StudentApp</span>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -49,26 +49,25 @@
             </div>
         </nav>
     </header>
-<?php
-    if(isset($message)) {
-        echo $message;
+    <?php
+        if(isset($message)) {
+            echo $message;
+        }
+
+    // Si $controleur='voiture' et $view='list',
+    // alors $filepath="/chemin_du_site/view/voiture/list.php"
+    if (isset($view)) {
+        $filepath = File::build_path(array("view", static::$object, "$view.php"));
+        require $filepath;
+    } else {
+        $file = File::build_path(array("view", "home.php"));
+        require_once $file;
     }
+    ?>
 
-// Si $controleur='voiture' et $view='list',
-// alors $filepath="/chemin_du_site/view/voiture/list.php"
-if (isset($view)) {
-    $filepath = File::build_path(array("view", static::$object, "$view.php"));
-    require $filepath;
-} else {
-    $file = File::build_path(array("view", "home.php"));
-    require_once $file;
-}
-?>
-
-
-<footer class="footer">
-    Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
-</footer>
+    <footer id="footer">
+        Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
+    </footer>
 </body>
 
 

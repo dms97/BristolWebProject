@@ -10,12 +10,12 @@ class ControllerUser {
 
     public static function readAll() {
         Model::isConnected();
-        Model::isAdmin();
 
-        $tab_user = ModelUser::getAllUser();     //appel au modèle pour gerer la BD
-        $view = "list";
+        $objet = ModelUser::getUserByLogin($_SESSION['login']);     //appel au modèle pour gerer la BD
+        $view = "readAll";
         $controller = 'User';
         $pagetitle='Liste des utilisateurs';
+        $stylesheet = 'css/user.css';
         require File::build_path(array('view','view.php'));
     }
 

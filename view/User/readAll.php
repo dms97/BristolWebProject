@@ -2,42 +2,37 @@
 
 <div class="account">
     <div>
-        <form method="post" action="index.php?controller=administration&action=update">
+        <form method="post" action="index.php?controller=user&action=update">
             <fieldset>
                 <legend>Mes infomations personnelles :</legend>
                 <p>
-                    <input type="text" placeholder="Identifiant" name="username" id="username_id"
-                           value="<?php echo htmlspecialchars($objet['username']); ?>" readonly/>
+                    <input type="text" name="Username" id="username_id"
+                           value="<?php echo htmlspecialchars($objet->get('Id')); ?>" readonly/>
                 </p>
 
                 <p>
                     <input type="text" placeholder="First Name" name="fname" id="fname_id"
-                           value="<?php echo htmlspecialchars($objet['fname']); ?>" readonly/>
+                           value="<?php echo htmlspecialchars($objet->get('FirstName')); ?>" readonly/>
                 </p>
 
                 <p>
-                    <input type="text" placeholder="First Name" name="lname" id="lname_id"
-                           value="<?php echo htmlspecialchars($objet['lname']); ?>" readonly/>
-                </p>
-
-                <p>
-                    <input type="date" placeholder="Birth Date" name="birthdate" id="date_id"
-                           value="<?php echo htmlspecialchars($objet['birthdate']); ?>"/>
+                    <input type="text" placeholder="Last Name" name="lname" id="lname_id"
+                           value="<?php echo htmlspecialchars($objet->get('LastName')); ?>" readonly/>
                 </p>
 
                 <p>
                     <input type="email" placeholder="E-Mail" name="mail" id="mail_id"
-                           value="<?php echo htmlspecialchars($objet['mail']); ?>"/>
+                           value="<?php echo htmlspecialchars($objet->get('Email')); ?>"/>
                 </p>
 
                 <p>
-                    <input type="text" placeholder="Address" name="address" id="address_id"
-                           value="<?php echo htmlspecialchars($objet['address']); ?>"/>
+                    <input type="text" placeholder  ="Address" name="address" id="address_id"
+                           value="<?php echo htmlspecialchars($objet->get('Address')); ?>"/>
                 </p>
 
                 <p>
                     <input type="tel" placeholder="Phone Number" name="num_tel" id="tel_id"
-                           value="<?php echo htmlspecialchars($objet['num_tel']); ?>"/>
+                           value="<?php echo htmlspecialchars($objet->get('PhoneNumber')); ?>"/>
                 </p>
 
                 <p>
@@ -50,7 +45,7 @@
                 </p>
 
                 <p>
-                    <input type="submit" value="Edit Information"/>
+                    <button type="submit">Save</button>
                 </p>
             </fieldset>
         </form>
