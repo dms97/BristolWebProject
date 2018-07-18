@@ -99,24 +99,20 @@ class ModelNote extends Model
         $tmp2 =0;
         $mean = array();
         $i =0;
-        $j =0
         $cpt=0;
         foreach ($objet as $t) {
             if ($tmp != $t->get("ModuleId") && $cpt != 0) {
-                $mean[$i][$j] = $tmp;
-                $mean[$i][$j+1] = $tmp2/100;
-                $mean[$i][$j+2] = Lettre($tmp2/100);
+                $mean[$i]['id'] = $tmp;
+                $mean[$i]['mean'] = $tmp2/100;
+                $mean[$i]['grade'] = Lettre($tmp2/100);
                 $i = $i +1; 
                 $tmp = $t->get("ModuleId");
-                $j =0;
                 $tmp2 = $t->get("Marks") * $t->get("Ratio");
                 
             }
-            else {
                 $tmp2 = $tmp2 + ($t->get("Marks") * $t->get("Ratio"));
                 $tmp = $t->get("ModuleId");
                 $cpt = $cpt +1;
-            }
         }
         return $mean;
     }
