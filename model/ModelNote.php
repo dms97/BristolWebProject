@@ -99,11 +99,14 @@ class ModelNote extends Model
         $tmp2 =0;
         $mean = array();
         $i =0;
+<<<<<<< HEAD
         $j =0;
         $cpt =0;
+=======
+        $cpt=0;
+>>>>>>> e17d3f5c88eb8d822b122ae4f3d6835f4028d9f1
         foreach ($objet as $t) {
             if ($tmp != $t->get("ModuleId") && $cpt != 0) {
-                $mean[$i][$j] = $tmp;
                 $mean[$i][$j+1] = $tmp2/100;
                 $mean[$i][$j+2] = Lettre($tmp2/100);
                 $i = $i +1; 
