@@ -4,6 +4,7 @@
         <th colspan="3">Assessment and Exam Components</th>
         <th>Mean</th>
         <th>Grade</th>
+        <th>Resit</th>
     </tr>
     <?php
 	$tmp = "";
@@ -24,6 +25,35 @@
                 }
                 echo '<td>' . htmlspecialchars($objet2[$j]['mean']) . '</td>';
                 echo '<td>' . htmlspecialchars($objet2[$j]['grade']) . '</td>';
+                if (htmlspecialchars($objet2[$j]['mean']) < 40) {
+                    echo '<td> Failed - Sign in Resit ';
+                    ?><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" name="business" value="admin@UWE.com">
+                        <input type="hidden" name="item_name" value="NewExam">
+                        <input type="hidden" name="item_number" value="MEM32507725">
+                        <input type="hidden" name="amount" value="9">
+                        <input type="hidden" name="tax" value="1">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="currency_code" value="USD">
+                        <!-- Enable override of buyers's address stored with PayPal . -->
+                        <input type="hidden" name="address_override" value="1">
+                        <!-- Set variables that override the address stored with PayPal. -->
+                        <input type="hidden" name="first_name" value="John">
+                        <input type="hidden" name="last_name" value="Doe">
+                        <input type="hidden" name="address1" value="345 Lark Ave">
+                        <input type="hidden" name="city" value="San Jose">
+                        <input type="hidden" name="state" value="CA">
+                        <input type="hidden" name="zip" value="95121">
+                        <input type="hidden" name="country" value="UK">
+                        <input type="image" name="submit"
+                               src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                               alt="PayPal - The safer, easier way to pay online">
+                    </form> </td> <?php
+                }
+                else {
+                    echo '<td> Success </td>';
+                }
                 echo '</tr>';
                 $j = $j+1;
                 $cpt = 0;
@@ -44,7 +74,36 @@
     }
     echo '<td>' . htmlspecialchars($objet2[$j]['mean']) . '</td>';
     echo '<td>' . htmlspecialchars($objet2[$j]['grade']) . '</td>';
-	echo '</tr>';
+    if (htmlspecialchars($objet2[$j]['mean']) < 40) {
+        ?><td><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="StudentApp@UWE.com">
+            <input type="hidden" name="item_name" value="ResitExam">
+            <input type="hidden" name="item_number" value="MEM32507725">
+            <input type="hidden" name="amount" value="9">
+            <input type="hidden" name="tax" value="1">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="currency_code" value="USD">
+            <!-- Enable override of buyers's address stored with PayPal . -->
+            <input type="hidden" name="address_override" value="1">
+            <!-- Set variables that override the address stored with PayPal. -->
+            <input type="hidden" name="first_name" value="John">
+            <input type="hidden" name="last_name" value="Doe">
+            <input type="hidden" name="address1" value="345 Lark Ave">
+            <input type="hidden" name="city" value="San Jose">
+            <input type="hidden" name="state" value="CA">
+            <input type="hidden" name="zip" value="95121">
+            <input type="hidden" name="country" value="US">
+            <input type="image" name="submit"
+                   src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                   alt="PayPal - The safer, easier way to pay online">
+        </form> </td> <?php
+    }
+    else {
+        echo '<td> Success </td>';
+    }
+    echo '</tr>';
+    
 	?>
 	
     <!-- Example:
@@ -58,3 +117,4 @@
     </tr>
 	-->
 </table>
+

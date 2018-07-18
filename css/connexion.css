@@ -1,10 +1,20 @@
 .connect {
     text-align: center;
+    color: black;
 }
 
 form {
     display: inline-block;
-    border: 2px solid;
     padding: 0 100px 15px;
     margin-top: 15px;
+    background-color: white;
+}
+
+h1 {
+    color: black;
+}
+
+#validation {
+    background-color: grey;
+    color: white;
 }

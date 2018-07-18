@@ -33,7 +33,7 @@
                 <ul class="nav navbar-nav">
                     <li <?php if (isset($object) && static::$object === 'accueil') echo 'class="active"'; ?>><a href="index.php?controller=accueil">Home</a></li>
                 <?php if(isset($_SESSION['login'])) { ?>
-                    <li <?php if (isset($object) && static::$object === 'module') echo 'class="active"' ?>><a href="index.php?controller=module">Modules</a></li>
+                    <li <?php if (isset($object) && static::$object === 'module') echo 'class="active"' ?>><a href="index.php?controller=note">Modules</a></li>
                     <li <?php if (isset($object) && static::$object === 'exam') echo 'class="active"' ?>><a href="index.php?controller=exam">Exams</a></li>
                     <li <?php if (isset($object) && static::$object === 'student') echo 'class="active"' ?>><a href="index.php?controller=student">Students</a></li>
                     <li <?php if (isset($object) && static::$object === 'user') echo 'class="active"' ?>><a href="index.php?controller=user">Administration</a></li>
