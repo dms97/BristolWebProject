@@ -7,16 +7,16 @@ class ModelNote extends Model
 
     protected static $object = 'exammarks';
 
-    private $ModuleID;
-    private $StudentID;
+    private $ModuleId;
+	private $Title;
     private $Marks;
-    private $ExamComponentsID;
-    private $Resit;
+    private $ExamType;
+	private $Ratio;
 
     public function get($nom_attribut)
     {
         if (property_exists($this, $nom_attribut)) {
-            return $this->nom_attribut;
+            return $this->$nom_attribut;
         } else {
             return false;
         }
@@ -31,14 +31,14 @@ class ModelNote extends Model
         }
     }
 
-    public function __construct($ModuleID = NULL, $StudentID = NULL, $Marks = NULL, $ExamComponentsID = NULL, $Resit = NULL)
+    public function __construct($ModuleId = NULL, $Title = NULL, $Marks = NULL, $ExamType = NULL, $Ratio = NULL)
     {
-        if (!is_null($id) && !is_null($password) && !is_null($firstName) && !is_null($lastName) && !is_null($email) && !is_null($role) && !is_null($phoneNumber) && !is_null($address)) {
-            $this->ModuleID = $ModuleID;
-            $this->StudentID = $StudentID;
+        if (!is_null($ModuleId) && !is_null($Title) && !is_null($Marks) && !is_null($ExamType) && !is_null($Ratio)) {
+            $this->ModuleId = $ModuleId;
+			$this->Title = $Title;
             $this->Marks = $Marks;
-            $this->ExamComponentsID = $ExamComponentsID;
-            $this->Resit = $Resit;
+            $this->ExamType = $ExamType;
+            $this->Ratio = $Ratio;
         }
     }
 
@@ -53,12 +53,20 @@ class ModelNote extends Model
         return $tab_p;
     }
 
-    public function getRange($StudentID)
+    static public function getRange($StudentID)
     {
         $bdd = new Model();
-        $sql = "SELECT Title ,Marks,ExamType,Ratio FROM `enrolled` INNER JOIN `users` ON users.Id=enrolled.StudentsID INNER JOIN `modules` ON modules.Id=enrolled.ModuleID INNER JOIN `examcomponents` ON examcomponents.ModuleId=enrolled.ModuleID INNER JOIN `exammarks` ON exammarks.ModuleID=enrolled.ModuleID AND exammarks.StudentsID=enrolled.StudentsID and exammarks.ExamComponentsID=examcomponents.Id WHERE users.id='$StudentID'";
-        $result = $bdd->query($sql);
-        $notes = array();
+        $sql = "SELECT E.ModuleId, M.Title, B.Marks, A.ExamType, A.Ratio FROM `enrolled` E
+				INNER JOIN `users` U ON U.Id=E.StudentsID 
+				INNER JOIN `modules` M ON M.Id=E.ModuleID 
+				INNER JOIN `examcomponents` A ON A.ModuleId=E.ModuleID 
+				INNER JOIN `exammarks` B ON B.ModuleID=E.ModuleID AND B.StudentsID=E.StudentsID and B.ExamComponentsID=A.Id 
+				WHERE U.id='$StudentID'";
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelNote');
+        $result = $req_prep->fetchAll();
+        /*$notes = array();
         $i = 0;
         if ($result = mysqli_query($bdd, $sql)) {
             if (mysqli_num_rows($result) > 0) {
@@ -77,7 +85,8 @@ class ModelNote extends Model
         } else {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($bdd);
         }
-        return $notes;
+        return $notes;*/
+		return $result;
     }
 
     public function addMark($moduleID,$StudentID,$mark,$ExamCompoId,$Resit){
