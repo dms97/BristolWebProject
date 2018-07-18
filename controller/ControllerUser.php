@@ -233,5 +233,14 @@ class ControllerUser {
         $pagetitle='Modifier son profil';
         require File::build_path(array('view','view.php'));
     }
+	
+	public static function survey() {
+		$view='survey';
+        $controller='User';
+        $pagetitle='Survey';
+		$stylesheet='css/survey.css';
+        require File::build_path(array('view','view.php'));
+	}
+	
 }
 ?>
