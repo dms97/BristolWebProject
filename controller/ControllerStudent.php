@@ -5,7 +5,7 @@ require_once File::build_path(array('model', 'ModelUser.php'));
 class ControllerStudent
 {
 
-    protected static $object = 'student';
+    protected static $object = 'students';
 
     /*
      * Read all the exams in a table.
@@ -15,7 +15,7 @@ class ControllerStudent
         $controller = "student";
         $view = "readAll";
         $pagetitle = "Students";
-        $objet = ModelUser::selectStudents();
+        $objet = ModelUser::getAllStudents();
         require File::build_path(array('view', 'view.php'));
     }
 

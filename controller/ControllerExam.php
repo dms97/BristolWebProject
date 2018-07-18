@@ -1,7 +1,7 @@
 <?php
 
 require_once File::build_path(array('model', 'ModelExam.php'));
-//require_once File::build_path(array('controller', 'ControllerAdministration.php'));
+require_once File::build_path(array('model', 'ModelUser.php'));
 
 class ControllerExam
 {
@@ -32,7 +32,6 @@ class ControllerExam
         $controller = "exam";
         $view = "readAll";
         $pagetitle = "Exams";
-        $objet = ModelExam::selectAll();
         require File::build_path(array('view', 'view.php'));
     }
 
