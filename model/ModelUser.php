@@ -6,14 +6,14 @@ require_once File::build_path(array('lib', 'Security.php'));
 class ModelUser extends Model
 {
 
-    private $id;
-    private $password;
-    private $firstName;
-    private $lastName;
-    private $email;
-    private $role;
-    private $phoneNumber;
-    private $address;
+    private $Id;
+    private $Password;
+    private $FirstName;
+    private $FastName;
+    private $Email;
+    private $Role;
+    private $PhoneNumber;
+    private $Address;
 
     // un getter
     public function get($nom_attribut)
@@ -35,14 +35,14 @@ class ModelUser extends Model
     public function __construct($id = NULL, $password = NULL, $firstName = NULL, $lastName = NULL, $email = NULL, $role = NULL, $phoneNumber = NULL, $address = NULL)
     {
         if (!is_null($id) && !is_null($password) && !is_null($firstName) && !is_null($lastName) && !is_null($email) && !is_null($role) && !is_null($phoneNumber) && !is_null($address)) {
-            $this->id = $id;
-            $this->password = $password;
-            $this->firstName = $firstName;
-            $this->lastName = $lastName;
-            $this->email = $email;
-            $this->role = $role;
-            $this->phoneNumber = $phoneNumber;
-            $this->address = $address;
+            $this->Id = $id;
+            $this->Password = $password;
+            $this->FirstName = $firstName;
+            $this->LastName = $lastName;
+            $this->Email = $email;
+            $this->Role = $role;
+            $this->PhoneNumber = $phoneNumber;
+            $this->Address = $address;
         }
     }
 
@@ -52,9 +52,18 @@ class ModelUser extends Model
         $req_prep = Model::$pdo->prepare($sql);
         $req_prep->execute();
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUser');
-        $tab_p = $req_prep->FetchAll();
-
+        $tab_p = $req_prep->fetchAll();
         return $tab_p;
+    }
+	
+	static public function getAllStudents()
+    {
+        $sql = "SELECT * from users WHERE Role = 3;";
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUser');
+        $result = $req_prep->fetchAll();
+        return $result;
     }
 
     static public function getUserByLogin($log)

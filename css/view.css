@@ -2,6 +2,11 @@ body {
     background-color: #bf0e00;
 }
 
+main {
+    min-height: 86.8vh;
+    padding-top: 15px;
+}
+
 .navbar {
     margin: 0 -15px;
     border-width: 0px;
