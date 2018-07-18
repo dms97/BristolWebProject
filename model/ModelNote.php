@@ -88,6 +88,7 @@ class ModelNote extends Model
                 $mean[$i]['grade'] = ModelNote::Lettre($tmp2/100);
                 $i = $i +1; 
                 $tmp = $t->get("ModuleId");
+                $j =0;
                 $tmp2 = $t->get("Marks") * $t->get("Ratio");
                 
             }

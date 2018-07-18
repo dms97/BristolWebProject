@@ -53,6 +53,7 @@ class ControllerModule
         $controller = "module";
         $view = "addModule";
         $pagetitle="Add New Modules";
+        $stylesheet = 'css/addModule.css';
         require File::build_path(array('view','view.php'));
     }
 }

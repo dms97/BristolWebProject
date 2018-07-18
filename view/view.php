@@ -49,21 +49,23 @@
             </div>
         </nav>
     </header>
-    <?php
-        if(isset($message)) {
-            echo $message;
-        }
+    <main>
+        <?php
+            if(isset($message)) {
+                echo $message;
+            }
 
-    // Si $controleur='voiture' et $view='list',
-    // alors $filepath="/chemin_du_site/view/voiture/list.php"
-    if (isset($view)) {
-        $filepath = File::build_path(array("view", static::$object, "$view.php"));
-        require $filepath;
-    } else {
-        $file = File::build_path(array("view", "home.php"));
-        require_once $file;
-    }
-    ?>
+        // Si $controleur='voiture' et $view='list',
+        // alors $filepath="/chemin_du_site/view/voiture/list.php"
+        if (isset($view)) {
+            $filepath = File::build_path(array("view", static::$object, "$view.php"));
+            require $filepath;
+        } else {
+            $file = File::build_path(array("view", "home.php"));
+            require_once $file;
+        }
+        ?>
+    </main>
 
     <footer id="footer">
         Created by Damien Mariotto, Alexis Jolin, Lucas Lana and Timothé Martin
