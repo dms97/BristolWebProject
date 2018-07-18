@@ -66,30 +66,10 @@ class ModelNote extends Model
         $req_prep->execute();
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelNote');
         $result = $req_prep->fetchAll();
-        /*$notes = array();
-        $i = 0;
-        if ($result = mysqli_query($bdd, $sql)) {
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_array($result)) {
-                    $notes[$i]['module'] = $row['Title'];
-                    $notes[$i]['examtype'] = $row['Examtype'];
-                    $notes[$i]['mark'] = $row['Marks'];
-                    $notes[$i]['ratio'] = $row['Ratio'];
-                    $i = $i + 1;
-                }
-                // Free result set
-                mysqli_free_result($result);
-            } else {
-                echo "No records matching your query were found.";
-            }
-        } else {
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($bdd);
-        }
-        return $notes;*/
 		return $result;
     }
 
-    public function addMark($moduleID,$StudentID,$mark,$ExamCompoId,$Resit){
+    public  static function addMark($moduleID,$StudentID,$mark,$ExamCompoId,$Resit){
         $bdd = new Model();
         $sql = "INSERT INTO `exammarks` (`ModuleID`, `StudentsID`, `Marks`, `ExamComponentsID`, `Resit`) VALUES (\''$moduleID'\', \''$StudentID'\', \''$mark'\', \''$ExamCompoId'\', \''$Resit'\')";
     }
@@ -100,24 +80,55 @@ class ModelNote extends Model
         $mean = array();
         $i =0;
         $cpt=0;
-
+        
         foreach ($objet as $t) {
             if ($tmp != $t->get("ModuleId") && $cpt != 0) {
-                $mean[$i][$j+1] = $tmp2/100;
-                $mean[$i][$j+2] = Lettre($tmp2/100);
+                $mean[$i]['id'] = $tmp;
+                $mean[$i]['mean'] = $tmp2/100;
+                $mean[$i]['grade'] = ModelNote::Lettre($tmp2/100);
                 $i = $i +1; 
                 $tmp = $t->get("ModuleId");
-                $j =0;
                 $tmp2 = $t->get("Marks") * $t->get("Ratio");
                 
             }
-            else {
-                $tmp2 = $tmp2 + ($t->get("Marks") * $t->get("Ratio"));
-                $tmp = $t->get("ModuleId");
-                $cpt = $cpt +1;
-            }
+			$tmp2 = $tmp2 + ($t->get("Marks") * $t->get("Ratio"));
+			$tmp = $t->get("ModuleId");
+			$cpt = $cpt +1;
         }
+        $mean[$i]['id'] = $tmp;
+        $mean[$i]['mean'] = $tmp2/100;
+        $mean[$i]['grade'] = ModelNote::Lettre($tmp2/100);
         return $mean;
+    }
+
+
+    public static function Lettre($Range) {
+        if ($Range < 40 ) {
+            return "F";
+        }
+        elseif ($Range >= 40 && $Range < 50)
+        {
+            return "D";
+        }
+        elseif ($Range >= 50 && $Range < 60)
+        {
+            return "C";
+        }
+        elseif ($Range >= 60 && $Range < 70)
+        {
+            return "B";
+        }
+        elseif ($Range >= 70 && $Range < 80)
+        {
+            return "A";
+        }
+        elseif ($Range >= 80 && $Range < 90)
+        {
+            return "A+";
+        }
+        elseif ($Range >= 90)   {
+            return "A++";
+        }
     }
 
 }   
