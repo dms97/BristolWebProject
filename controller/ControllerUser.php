@@ -14,7 +14,7 @@ class ControllerUser {
         $objet = ModelUser::getUserByLogin($_SESSION['login']);     //appel au modèle pour gerer la BD
         $view = "readAll";
         $controller = 'User';
-        $pagetitle='Liste des utilisateurs';
+        $pagetitle='User infos';
         $stylesheet = 'css/user.css';
         require File::build_path(array('view','view.php'));
     }
@@ -175,74 +175,53 @@ class ControllerUser {
 
     public static function update(){
         Model::isConnected(); //vérifie la connexion
-        if (isset($_POST['login'],$_POST['oldMdp'], $_POST['mail'], $_POST['nom'], $_POST['prenom'], $_POST['adresse'])) {
-            // Récupère les valeurs existantes pour faire les tests
-            $mail = $_POST['mail'];
-            $nom= $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $adresse = $_POST['adresse'];
+        if (isset($_POST['email'], $_POST['address'], $_POST['phone'])) {
+            $email = $_POST['email'];
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
 
-            if (self::verifMdp($_POST['oldMdp'])){
-                if (!empty($mail) && !ctype_space($mail) && self::verifMail($mail) ){ // Si pas de mail
-                    if (!empty($nom) && !ctype_space($nom)){ // Si nom non vide et pas que des espaces
-                        if (!empty($prenom) && !ctype_space($prenom)){
-                            if (!empty($adresse) && !ctype_space($adresse)){ // Si adresse non vide et si pas que des espaces
+            if (strlen($_POST['password']) > 0 && strlen($_POST['conf_password']) > 0 && $_POST['password'] === $_POST['conf_password']) {
+                $password = $_POST['password'];
+            } else {
+                $password = null;
+            }
 
-                                if (isset($_POST['mdp'], $_POST['mdpVerif']) && !empty($_POST['mdp']) && !empty($_POST['mdpVerif'])){ // si changement mdp
-                                    if (self::verifMdp($_POST['oldMdp']) && $_POST['mdp'] == $_POST['mdpVerif']){ // vérification des mdp
-                                        $user = ModelUSer::getUserByLogin($_POST['login']); // Récupère les informations d u login
-                                        $dateN = $user->get('dateN'); //Récupère la date pour création
+            $user = ModelUser::getUserByLogin($_SESSION['login']);
 
-                                        $userToUpdate = new ModelUser($_POST['login'],Security::chiffrer($_POST['mdp']),$mail,$nom,$prenom,$adresse,$dateN, 0, NULL);
-
-                                        $userToUpdate->update(); //Fait l'update de l'objet au dessus
-                                        $message = "<div class='alert alert-success'>Modification réussie</div>";
-
-                                        $tab_com = ModelCommande::getAllCommande($_SESSION['login']); //Affiche la page perso de la personne
-                                        $view = "list";
-                                        $controller = 'Commandes';
-                                        $pagetitle='Liste Commandes';
-                                        require File::build_path(array('view','view.php'));
-                                    }
-                                }
-                                else{
-                                    $user = ModelUSer::getUserByLogin($_POST['login']);//Récup les informations de la personne et surtout la date en dessous
-                                    $dateN = $user->get('dateN');
-
-                                    $userToUpdate = new ModelUser($_POST['login'],Security::chiffrer($_POST['oldMdp']),$mail,$nom,$prenom,$adresse,$dateN, 0, NULL);
-                                    $userToUpdate->update();
-                                    $message = "<div class='alert alert-success'>Modification réussie</div>";
-
-                                    $tab_com = ModelCommande::getAllCommande($_SESSION['login']);
-                                    $view = "list";
-                                    $controller = 'Commandes';
-                                    $pagetitle='Liste Commandes';
-                                    require File::build_path(array('view','view.php'));
-                                    exit();
-                                }
-                            }else {
-                                $message = "<div class='alert alert-warning'>Adresse non valide</div>";
-                            }
-                        }else {
-                            $message = "<div class='alert alert-warning'>Prénom non valide </div>";
-                        }
-                    }else {
-                        $message= "<div class='alert alert-warning'>Nom non valide </div>";
-                    }
+            /** @var ModelUser $user */
+            if ($user->get('Email') !== $email || $user->get('Address') !== $address || $user->get('PhoneNumber') !== $phone) {
+                if ($password !== null) {
+                    $sql = 'UPDATE users SET Email=:email, Address=:address, PhoneNumber=:phone, Password=:pwd WHERE Id=:id';
+                    $req_prep = Model::$pdo->prepare($sql);
+                    $req_prep->execute(array(
+                        "id" => $_SESSION['login'],
+                        "email" => $email,
+                        "address" => $address,
+                        "phone" => $phone,
+                        "pwd" => Security::chiffrer($password)
+                    ));
                 } else {
-                    $message = "<div class='alert alert-warning'>Mail non valide </div>";
+                    $sql = 'UPDATE users SET Email=:email, Address=:address, PhoneNumber=:phone WHERE Id=:id';
+                    $req_prep = Model::$pdo->prepare($sql);
+                    $req_prep->execute(array(
+                        "id" => $_SESSION['login'],
+                        "email" => $email,
+                        "address" => $address,
+                        "phone" => $phone
+                    ));
                 }
-            }else{
-                $message="<div class='alert alert-warning'>Mot de passe non valide </div>";
             }
         } else {
-            $message = '<div class="aler alert-warning">Les données du formulaire sont incorrectes !</div>';
+            $message = '<div class="alert alert-danger .alert-dismissible"> <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Form datas are incorrect !</strong></div>';
         }
 
-        $view = "update";
+        $view = "readAll";
         $controller = 'User';
-        $pagetitle='Modification Profil';
-        require File::build_path(array('view','view.php')); // Affiche le formulaire de de update
+        $pagetitle='User infos';
+        $stylesheet = 'css/user.css';
+        if (!isset($message)) $message = '<div class="alert alert-success .alert-dismissible"> <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Informations successfully updated !</strong></div>';
+        $objet = ModelUser::getUserByLogin($_SESSION['login']);
+        require File::build_path(array('view','view.php'));
     }
 
 
@@ -254,5 +233,14 @@ class ControllerUser {
         $pagetitle='Modifier son profil';
         require File::build_path(array('view','view.php'));
     }
+	
+	public static function survey() {
+		$view='survey';
+        $controller='User';
+        $pagetitle='Survey';
+		$stylesheet='css/survey.css';
+        require File::build_path(array('view','view.php'));
+	}
+	
 }
 ?>
