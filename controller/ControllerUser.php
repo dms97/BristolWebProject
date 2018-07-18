@@ -37,10 +37,11 @@ class ControllerUser {
         $view = "connect";
         $controller = "User";
         $pagetitle="Connexion";
+        $stylesheet = 'css/connexion.css';
         require File::build_path(array('view','view.php'));
     }
 
-    public static function verifUse(){
+    public static function verifUser(){
         $exist= ModelUser::verifUser($_POST['login'],$_POST['password']);
         $role= ModelUser::getRole($_POST['login']);
         $view = "logged";
