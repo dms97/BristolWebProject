@@ -55,6 +55,10 @@ class ControllerModule
         $pagetitle="Add New Modules";
         require File::build_path(array('view','view.php'));
     }
+
+    public static function createModule(){
+        
+    }
 }
 
 ?>
