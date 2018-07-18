@@ -73,6 +73,7 @@ class ControllerNote {
         {
             if (isset($_SESSION['login'])) {
                 $objet = ModelNote::getRange($_SESSION['login']);
+                $objet2 = ModelNote::Mean($object);
                 $controller = "note";
                 $view = "readAll";
                 $pagetitle = "Notes par module";
