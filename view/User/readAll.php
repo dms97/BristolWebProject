@@ -2,7 +2,7 @@
     <div>
         <form method="post" action="index.php?controller=user&action=update">
             <fieldset>
-                <legend>Mes infomations personnelles :</legend>
+                <legend>My personal informations :</legend>
                 <p>
                     <input type="text" name="id" disabled
                            value="<?php echo htmlspecialchars($objet->get('Id')); ?>" readonly/>

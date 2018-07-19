@@ -30,7 +30,7 @@
                     echo '<td> Failed - Sign in Resit ';
                     ?><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <input type="hidden" name="cmd" value="_xclick">
-                        <input type="hidden" name="business" value="admin@UWE.com">
+                        <input type="hidden" name="business" value="studentapp@uwe.com">
                         <input type="hidden" name="item_name" value="NewExam">
                         <input type="hidden" name="item_number" value="MEM32507725">
                         <input type="hidden" name="amount" value="9">
@@ -46,11 +46,11 @@
                         <input type="hidden" name="city" value="San Jose">
                         <input type="hidden" name="state" value="CA">
                         <input type="hidden" name="zip" value="95121">
-                        <input type="hidden" name="country" value="UK">
+                        <input type="hidden" name="country" value="US">
                         <input type="image" name="submit"
                                src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
                                alt="PayPal - The safer, easier way to pay online">
-                    </form> </td> <?php
+                    </form></td> <?php
                 }
                 else {
                     echo '<td> Success </td>';
@@ -78,8 +78,8 @@
     if (htmlspecialchars($objet2[$j]['mean']) < 40) {
         ?><td><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="StudentApp@UWE.com">
-            <input type="hidden" name="item_name" value="ResitExam">
+            <input type="hidden" name="business" value="studentapp@uwe.com">
+            <input type="hidden" name="item_name" value="NewExam">
             <input type="hidden" name="item_number" value="MEM32507725">
             <input type="hidden" name="amount" value="9">
             <input type="hidden" name="tax" value="1">
@@ -91,7 +91,6 @@
             <input type="hidden" name="first_name" value="John">
             <input type="hidden" name="last_name" value="Doe">
             <input type="hidden" name="address1" value="345 Lark Ave">
-            <input type="hidden" name="address2" value="">
             <input type="hidden" name="city" value="San Jose">
             <input type="hidden" name="state" value="CA">
             <input type="hidden" name="zip" value="95121">

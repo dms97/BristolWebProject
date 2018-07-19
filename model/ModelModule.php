@@ -100,6 +100,39 @@ class ModelModule extends Model
 		}
 	}
 
+    public static function getAllProf(){
+        $sql = "SELECT * from modules";
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModules');
+        $tab_p = $req_prep->FetchAll();
+
+        return $tab_p;
+    }
+
+    public static function addModule($title){
+        $sql = "INSERT INTO modules(Title) VALUES (:title)";
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array(
+            "title" => $title,
+        );
+        $req_prep->execute($values);
+        return true;
+    }
+
+    public static function getModule($title){
+        $sql = "SELECT * FROM modules where title=:title";
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array(
+            "title" => $title,
+        );
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS,'ModelModules');
+        $tab = $req_prep->FetchAll();
+
+        return $tab;
+    }
+
 
 
 }
