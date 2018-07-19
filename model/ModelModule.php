@@ -66,7 +66,7 @@ class ModelModule extends Model
         }
     }
 	
-	static function addModule($id, $title) {
+	static function addModuleBDD($id, $title) {
 		try {
 			$sql = 'INSERT INTO bristol.modules VALUES (:id, :title)';
 			$verif = Model::$pdo->prepare($sql);
@@ -83,7 +83,7 @@ class ModelModule extends Model
 		}
 	}
 	
-	static function addEnrolled($moduleId, $studentId) {
+	static function addEnrolledBDD($moduleId, $studentId) {
 		try {
 			$sql = 'INSERT INTO bristol.enrolled VALUES (:moduleId, :studentId)';
 			$verif = Model::$pdo->prepare($sql);

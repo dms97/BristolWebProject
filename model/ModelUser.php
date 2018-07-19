@@ -298,7 +298,7 @@ class ModelUser extends Model
         }
     }*/
 	
-	static function addUser($id, $pwd, $fname, $lname, $mail, $role, $phone, $address) {
+	static function addUserBDD($id, $pwd, $fname, $lname, $mail, $role, $phone, $address) {
 		try {
 			$sql = 'INSERT INTO bristol.users VALUES (:id, :pwd, :fname, :lname, :mail, :role, :phone, :address)';
 			$verif = Model::$pdo->prepare($sql);

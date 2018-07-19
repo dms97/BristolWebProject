@@ -56,7 +56,7 @@ class ModelExam extends Model{
         return $data;
     }
 	
-	static function addExam($id, $moduleId, $examDate, $examType, $ratio) {
+	static function addExamBDD($id, $moduleId, $examDate, $examType, $ratio) {
 		try {
 			$sql = 'INSERT INTO bristol.examcomponents VALUES (:id, :moduleId, :examDate, :examType, :ratio)';
 			$verif = Model::$pdo->prepare($sql);
@@ -75,7 +75,7 @@ class ModelExam extends Model{
 		}
 	}
 	
-	static function addMark($moduleId, $studentId, $mark, $examId, $resit) {
+	static function addMarkBDD($moduleId, $studentId, $mark, $examId, $resit) {
 		try {
 			$sql = 'INSERT INTO bristol.exammarks VALUES (:moduleId, :studentId, :mark, :examId, :resit)';
 			$verif = Model::$pdo->prepare($sql);
