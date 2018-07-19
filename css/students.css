@@ -9,11 +9,14 @@
 	box-sizing: border-box; 
 }
 
+main {
+  padding-top: 50px;
+}
 
 table {
   border-collapse: separate;
   background:#fff;
-  margin:50px auto;
+  margin:0px auto;
   text-align: center;
 }
 
