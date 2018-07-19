@@ -11,6 +11,7 @@
     $i = 0;
     $j=0;
     $cpt = 0;
+
    // var_dump($objet2);
     foreach ($objet as $t) {
         if ($tmp != htmlspecialchars($t->get("ModuleId"))) {
@@ -90,6 +91,7 @@
             <input type="hidden" name="first_name" value="John">
             <input type="hidden" name="last_name" value="Doe">
             <input type="hidden" name="address1" value="345 Lark Ave">
+            <input type="hidden" name="address2" value="">
             <input type="hidden" name="city" value="San Jose">
             <input type="hidden" name="state" value="CA">
             <input type="hidden" name="zip" value="95121">
@@ -105,16 +107,46 @@
     echo '</tr>';
     
 	?>
-	
-    <!-- Example:
-	<tr>
-        <td>WP</td>
-        <td>Assignment</td>
-        <td>Assignment</td>
-        <td>Assignment</td>
-        <td>0</td>
-        <td>A++</td>
-    </tr>
-	-->
 </table>
+<?php
+
+$t=0;
+$dataPoints = array();
+while ($t < count($objet2)){
+   $dataPoints[$t]=array("label"=>$objet2[$t]['id'] , "y"=> $objet2[$t]['mean']);
+    $t = $t+1;
+}
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title: {
+		text: "Your means by module"
+	},
+	axisY: {
+		title: "Marks",
+		includeZero: false
+	},
+	data: [{
+		type: "column",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 270px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>                              
+
 

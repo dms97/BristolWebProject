@@ -75,25 +75,25 @@ class ModelNote extends Model
     }
 
     public static function Mean($objet){
-        $tmp=0;
+        $tmp="";
         $tmp2 =0;
         $mean = array();
         $i =0;
         $cpt=0;
         
         foreach ($objet as $t) {
-            if ($tmp != $t->get("ModuleId") && $cpt != 0) {
+            if ($tmp != $t->get("Title") && $cpt != 0) {
                 $mean[$i]['id'] = $tmp;
                 $mean[$i]['mean'] = $tmp2/100;
                 $mean[$i]['grade'] = ModelNote::Lettre($tmp2/100);
                 $i = $i +1; 
-                $tmp = $t->get("ModuleId");
+                $tmp = $t->get("Title");
                 $tmp2 = $t->get("Marks") * $t->get("Ratio");
                 
             }
             else{
 			$tmp2 = $tmp2 + ($t->get("Marks") * $t->get("Ratio"));
-			$tmp = $t->get("ModuleId");
+			$tmp = $t->get("Title");
             $cpt = $cpt +1;
             }
         }
