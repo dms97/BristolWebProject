@@ -315,7 +315,7 @@ class ModelUser extends Model
 						);
 
 			$verif->execute($values);
-			echo 'User added.';
+			echo 'User ' . $id . ' added.';
 		} catch (PDOException $e) {
 			echo 'An error has occurred :/';
 			die();

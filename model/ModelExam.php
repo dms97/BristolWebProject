@@ -55,6 +55,44 @@ class ModelExam extends Model{
         }
         return $data;
     }
+	
+	static function addExam($id, $moduleId, $examDate, $examType, $ratio) {
+		try {
+			$sql = 'INSERT INTO bristol.examcomponents VALUES (:id, :moduleId, :examDate, :examType, :ratio)';
+			$verif = Model::$pdo->prepare($sql);
+			$values = array(
+							'id' => strip_tags($id),
+							'moduleId' => strip_tags($moduleId),
+							'examDate' => strip_tags($examDate),
+							'examType' => strip_tags($examType),
+							'ratio' => strip_tags($ratio)
+						);
+			$verif->execute($values);
+			echo 'Exam ' . $id . ' added.';
+		} catch (PDOException $e) {
+			echo 'An error has occurred :/';
+			die();
+		}
+	}
+	
+	static function addMark($moduleId, $studentId, $mark, $examId, $resit) {
+		try {
+			$sql = 'INSERT INTO bristol.exammarks VALUES (:moduleId, :studentId, :mark, :examId, :resit)';
+			$verif = Model::$pdo->prepare($sql);
+			$values = array(
+							'moduleId' => strip_tags($moduleId),
+							'studentId' => strip_tags($studentId),
+							'mark' => strip_tags($mark),
+							'examId' => strip_tags($examId),
+							'resit' => strip_tags($resit)
+						);
+			$verif->execute($values);
+			echo 'Mark ' . $mark . ' added to student ' . $studentId . ' in module ' . $moduleId . '.';
+		} catch (PDOException $e) {
+			echo 'An error has occurred :/';
+			die();
+		}
+	}
 
 }
 
