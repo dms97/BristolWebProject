@@ -212,14 +212,14 @@ class ControllerUser {
                 }
             }
         } else {
-            $message = '<div class="alert alert-danger"><strong>Form datas are incorrect !</strong></div>';
+            $message = '<div class="alert alert-danger .alert-dismissible"> <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Form datas are incorrect !</strong></div>';
         }
 
         $view = "readAll";
         $controller = 'User';
         $pagetitle='User infos';
         $stylesheet = 'css/user.css';
-        if (!isset($message)) $message = '<div class="alert alert-success"><strong>Informations successfully updated !</strong></div>';
+        if (!isset($message)) $message = '<div class="alert alert-success .alert-dismissible"> <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Informations successfully updated !</strong></div>';
         $objet = ModelUser::getUserByLogin($_SESSION['login']);
         require File::build_path(array('view','view.php'));
     }

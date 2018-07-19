@@ -5,7 +5,7 @@
 ?>
 <html lang="en">
 <head>
-    <?php if(isset($pagetitle)) echo "<title>$pagetitle</title>"; else echo "<title>Project</title>" ?>
+    <?php if(isset($pagetitle)) echo "<title>$pagetitle</title>"; else echo "<title>StudentApp</title>" ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -31,12 +31,12 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li <?php if (isset($object) && static::$object === 'accueil') echo 'class="active"'; ?>><a href="index.php?controller=accueil">Home</a></li>
+                    <li <?php if (isset(static::$object) && static::$object === 'accueil') echo 'class="active"'; ?>><a href="index.php?controller=accueil">Home</a></li>
                 <?php if(isset($_SESSION['login'])) { ?>
-                    <li <?php if (isset($object) && static::$object === 'module') echo 'class="active"' ?>><a href="index.php?controller=note">Modules</a></li>
-                    <li <?php if (isset($object) && static::$object === 'exam') echo 'class="active"' ?>><a href="index.php?controller=exam">Exams</a></li>
-                    <li <?php if (isset($object) && static::$object === 'student') echo 'class="active"' ?>><a href="index.php?controller=student">Students</a></li>
-                    <li <?php if (isset($object) && static::$object === 'user') echo 'class="active"' ?>><a href="index.php?controller=user">Administration</a></li>
+                    <li <?php if (isset(static::$object) && static::$object === 'note') echo 'class="active"' ?>><a href="index.php?controller=note">Modules</a></li>
+                    <?php if($_SESSION['Role'] === 'prof' || $_SESSION['Role'] === 'admin') {?><li <?php if (isset(static::$object) && static::$object === 'exam') echo 'class="active"' ?>><a href="index.php?controller=exam">Exams</a></li><?php } ?>
+                    <li <?php if (isset(static::$object) && static::$object === 'students') echo 'class="active"' ?>><a href="index.php?controller=student">Students</a></li>
+                    <li <?php if (isset(static::$object) && static::$object === 'User') echo 'class="active"' ?>><a href="index.php?controller=user">Administration</a></li>
                 <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

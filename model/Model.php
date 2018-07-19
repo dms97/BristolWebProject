@@ -1,6 +1,8 @@
 <?php
 
 require_once File::build_path(array('config', 'Conf.php'));
+require_once File::build_path(array('controller', 'ControllerAccueil.php'));
+
 
 class Model {
 
@@ -29,7 +31,10 @@ class Model {
     }
     public static function isConnected(){
         if(!isset($_SESSION['login'])){
-            $pagetitle="accueil";
+            $pagetitle="Home page";
+            $view = "readAll";
+            $controller = 'User';
+            $stylesheet = 'css/home.css';
             $message = "<div class='alert alert-warning'>Vous n'êtes pas connecté</div>";
             require File::build_path(array("view","view.php"));
         }

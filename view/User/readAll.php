@@ -1,8 +1,8 @@
-<div class="account">
+<div class="account col-sm-offset-4 col-sm-4">
     <div>
         <form method="post" action="index.php?controller=user&action=update">
             <fieldset>
-                <legend>Mes infomations personnelles :</legend>
+                <legend>My personal informations :</legend>
                 <p>
                     <input type="text" name="id" disabled
                            value="<?php echo htmlspecialchars($objet->get('Id')); ?>" readonly/>
@@ -42,7 +42,7 @@
                 </p>
 
                 <p>
-                    <button type="submit">Save</button>
+                    <button id="button_save_form" type="submit">Save</button>
                 </p>
             </fieldset>
         </form>
