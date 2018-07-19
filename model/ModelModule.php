@@ -14,7 +14,7 @@ class ModelModule extends Model
     public function get($nom_attribut)
     {
         if (property_exists($this, $nom_attribut)) {
-            return $this->nom_attribut;
+            return $this->$nom_attribut;
         } else {
             return false;
         }
@@ -23,7 +23,7 @@ class ModelModule extends Model
     public function set($nom_attribut)
     {
         if (property_exists($this, $nom_attribut)) {
-            return $this->nom_attribut;
+            return $this->$nom_attribut;
         } else {
             return false;
         }
