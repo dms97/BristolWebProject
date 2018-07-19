@@ -50,4 +50,7 @@
             </fieldset>
         </form>
     </div>
+	<div>
+		<p class="survey">Take time to answer our evaluation survey! Click <a href="index.php?controller=user&action=survey">HERE</a> !</p>
+	</div>
 </div>

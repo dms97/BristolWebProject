@@ -15,6 +15,17 @@ input {
     color: white;
 }
 
+.survey {
+	margin-top: 5%;
+	text-align: center;
+	color: grey;
+	font-weight: bold;
+}
+
+.survey a {
+	color: #0093ff;
+}
+
 @media screen and (max-width: 768px) {
     input {
         padding: 5px;
