@@ -1,7 +1,7 @@
 <?php
 
 require_once File::build_path(array('model', 'ModelModule.php'));
-//require_once File::build_path(array('controller', 'ControllerAdministration.php'));
+require_once File::build_path(array('model', 'ModelComponents.php'));
 
 class ControllerModule
 {
@@ -58,7 +58,14 @@ class ControllerModule
     }
 
     public static function createModule(){
-        
+        $nbComponents = $_POST['componentsNumber'];
+        ModelModule::addModule($_POST['Title']);
+        $modules=ModelModule::getModule($_POST['Title']);
+        for($i = 0; $i < $nbComponents; $i++ ){
+            ModelComponents::addComponents($modules[0][0],$_POST['examType'.$i],$_POST['examDate'.$i],$_POST['ratio'.$i]);
+        }
+        $controller="accueil";
+        $view="home";
     }
 }
 

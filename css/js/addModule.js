@@ -2,7 +2,7 @@ function formGenerator(number) {
     var nb = parseInt(number);
     var nbComponents = document.getElementsByName("components");
     var form = document.getElementById("formModule");
-    var submit =  document.getElementById("submitp");
+    var submit =  document.getElementById("submitMod");
     if (nb > 3) {
         nb = 3;
     }
