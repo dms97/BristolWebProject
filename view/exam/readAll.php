@@ -14,5 +14,5 @@
     ?>
 </table>
 <div class="container">
-    <a href="index.php?controller=module&action=addModule">Create new module</a>
+    <a class="btn btn-primary" href="index.php?controller=module&action=addModule">Create new module</a>
 </div>
