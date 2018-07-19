@@ -65,6 +65,40 @@ class ModelModule extends Model
             return $tab_p;
         }
     }
+	
+	static function addModuleBDD($id, $title) {
+		try {
+			$sql = 'INSERT INTO bristol.modules VALUES (:id, :title)';
+			$verif = Model::$pdo->prepare($sql);
+			$values = array(
+							'id' => strip_tags($id),
+							'title' => strip_tags($title)
+						);
+
+			$verif->execute($values);
+			echo 'Module ' . $id . ' added.';
+		} catch (PDOException $e) {
+			echo 'An error has occurred :/';
+			die();
+		}
+	}
+	
+	static function addEnrolledBDD($moduleId, $studentId) {
+		try {
+			$sql = 'INSERT INTO bristol.enrolled VALUES (:moduleId, :studentId)';
+			$verif = Model::$pdo->prepare($sql);
+			$values = array(
+							'moduleId' => strip_tags($moduleId),
+							'studentId' => strip_tags($studentId)
+						);
+
+			$verif->execute($values);
+			echo 'Student ' . $studentId . ' added to Module ' . $moduleId . ".";
+		} catch (PDOException $e) {
+			echo 'An error has occurred :/';
+			die();
+		}
+	}
 
     public static function getAllProf(){
         $sql = "SELECT * from modules";
