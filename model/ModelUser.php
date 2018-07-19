@@ -9,7 +9,7 @@ class ModelUser extends Model
     private $Id;
     private $Password;
     private $FirstName;
-    private $FastName;
+    private $LastName;
     private $Email;
     private $Role;
     private $PhoneNumber;

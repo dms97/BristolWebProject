@@ -32,6 +32,8 @@ class ControllerExam
         $controller = "exam";
         $view = "readAll";
         $pagetitle = "Exams";
+        $objet = ModelModule::getAllProf();
+        $stylesheet = "css/students.css";
         require File::build_path(array('view', 'view.php'));
     }
 

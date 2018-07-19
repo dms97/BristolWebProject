@@ -41,9 +41,17 @@ class Model {
     }
 
     public static function isAdmin(){
-        if(!$_SESSION['isAdmin']){
+        if($_SESSION['Role']!='admin'){
             $pagetitle="Access denied";
-            $message = "<div class='alert alert-warning'>Vous n'avez pas les droits d'accès</div>";
+            $message = "<div class='alert alert-warning'>You don't have right</div>";
+            require File::build_path(array("view","view.php"));
+        }
+    }
+
+    public static function isProf(){
+        if($_SESSION['Role']!='prof'){
+            $pagetitle="Access denied";
+            $message = "<div class='alert alert-warning'>You don't have right</div>";
             require File::build_path(array("view","view.php"));
         }
     }

@@ -64,8 +64,9 @@ class ControllerModule
         for($i = 0; $i < $nbComponents; $i++ ){
             ModelComponents::addComponents($modules[0][0],$_POST['examType'.$i],$_POST['examDate'.$i],$_POST['ratio'.$i]);
         }
-        $controller="accueil";
-        $view="home";
+        $controller="exam";
+        $view="readAll";
+        require File::build_path(array('view','view.php'));
     }
 }
 
