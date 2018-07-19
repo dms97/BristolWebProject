@@ -180,7 +180,7 @@ class ControllerUser {
             $address = $_POST['address'];
             $phone = $_POST['phone'];
 
-            if (strlen($_POST['password']) > 0 && strlen($_POST['conf_password']) > 0 && $_POST['password'] === $_POST['conf_password']) {
+            if (strlen($_POST['password']) >= 6 && strlen($_POST['conf_password']) >= 6 && $_POST['password'] === $_POST['conf_password']) {
                 $password = $_POST['password'];
             } else {
                 $password = null;
@@ -189,7 +189,7 @@ class ControllerUser {
             $user = ModelUser::getUserByLogin($_SESSION['login']);
 
             /** @var ModelUser $user */
-            if ($user->get('Email') !== $email || $user->get('Address') !== $address || $user->get('PhoneNumber') !== $phone) {
+            if ($user->get('Email') !== $email || $user->get('Address') !== $address || $user->get('PhoneNumber') !== $phone || $password !== null) {
                 if ($password !== null) {
                     $sql = 'UPDATE users SET Email=:email, Address=:address, PhoneNumber=:phone, Password=:pwd WHERE Id=:id';
                     $req_prep = Model::$pdo->prepare($sql);

@@ -11,6 +11,10 @@ input {
     width: 100px;
 }
 
+#error_field {
+    color: white;
+}
+
 @media screen and (max-width: 768px) {
     input {
         padding: 5px;

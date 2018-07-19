@@ -1,3 +1,4 @@
+<script src="./css/js/formUser.js"></script>
 <div class="account col-sm-offset-4 col-sm-4">
     <div>
         <form method="post" action="index.php?controller=user&action=update">
@@ -34,16 +35,19 @@
                 </p>
 
                 <p>
-                    <input type="password" pattern="^\S{6,}$" placeholder="New Password" name="password"/>
+                    <input id="pwd" onchange="checkPassword()"  onblur="checkPassword()" type="password" placeholder="New Password" name="password"/>
                 </p>
 
                 <p>
-                    <input type="password" pattern="^\S{6,}$" placeholder="Validation of new password" name="conf_password"/>
+                    <input id="cpwd" onchange="checkPassword()" onblur="checkPassword()" type="password" placeholder="Validation of new password" name="conf_password"/>
                 </p>
 
+                <p id="error_field"></p>
+
                 <p>
-                    <button id="button_save_form" type="submit">Save</button>
+                    <button id="button_save_form" onclick="checkPassword()" type="submit">Save</button>
                 </p>
             </fieldset>
         </form>
     </div>
+</div>
