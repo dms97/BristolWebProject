@@ -1,8 +1,9 @@
 function checkPassword() {
+    console.log($('#pwd').val().length);
     if ($('#pwd').val() !== $('#cpwd').val()) {
         $('#error_field').text("The new password field and confirm password field must match !");
         $("#button_save_form").attr("disabled", "disabled");
-    } else if ($('#pwd').val().length < 6) {
+    } else if ($('#pwd').val().length > 0 && $('#pwd').val().length < 6) {
         $('#error_field').text("The new password must have 6 character minimum");
         $("#button_save_form").attr("disabled", "disabled");
     } else {
